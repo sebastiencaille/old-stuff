@@ -1,0 +1,25 @@
+/*
+ * Decompiled with CFR 0_122.
+ */
+package ch.scaille.mldonkey.gui.download;
+
+import ch.scaille.gui.mvc.properties.BooleanProperty;
+import ch.scaille.gui.mvc.properties.ListProperty;
+import ch.scaille.gui.mvc.properties.ObjectProperty;
+import ch.scaille.mldonkey.model.FileDownload;
+import ch.scaille.mldonkey.model.FileDownloadGuiModel;
+
+class FileDownloadModel extends FileDownloadGuiModel {
+	final ObjectProperty<FileDownload> lastSelectedDownload;
+	final ListProperty<FileDownload> selectedDownloads;
+	final BooleanProperty showOnlyEmptySources;
+	final BooleanProperty showOnlyDownloading;
+
+	public FileDownloadModel(final ModelConfiguration config) {
+		super("DownloadPanel", config);
+		this.lastSelectedDownload = new ObjectProperty<>("LastSelectedFileDownload", this.getPropertySupport());
+		this.selectedDownloads = new ListProperty<>("SelectedFileDownloads", this.getPropertySupport());
+		this.showOnlyEmptySources = new BooleanProperty("OnlyEmptySources", this.getPropertySupport());
+		this.showOnlyDownloading = new BooleanProperty("OnlyDownloading", this.getPropertySupport());
+	}
+}

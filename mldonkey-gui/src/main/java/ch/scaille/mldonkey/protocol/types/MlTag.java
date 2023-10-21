@@ -3,11 +3,11 @@
  */
 package ch.scaille.mldonkey.protocol.types;
 
-import ch.scaille.mldonkey.MDLogger;
+import ch.scaille.mldonkey.GuiLogger;
 
 public class MlTag extends AbstractMlTypeContainer implements IMlType {
 	
-	private static final MDLogger LOGGER = new MDLogger(MlTag.class);
+	private static final GuiLogger LOGGER = new GuiLogger(MlTag.class);
 	
 	private final MlString tagName = new MlString();
 	private final MlInt8 tagType = new MlInt8();

@@ -1,10 +1,10 @@
 package ch.scaille.mldonkey;
 
-public class MDLogger {
+public class GuiLogger {
 
 	private final Class<?> clazz;
 
-	public MDLogger(Class<?> clazz) {
+	public GuiLogger(Class<?> clazz) {
 		this.clazz = clazz;
 	}
 

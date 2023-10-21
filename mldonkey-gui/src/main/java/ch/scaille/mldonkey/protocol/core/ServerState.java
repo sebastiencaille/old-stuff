@@ -3,7 +3,7 @@
  */
 package ch.scaille.mldonkey.protocol.core;
 
-import ch.scaille.mldonkey.MDLogger;
+import ch.scaille.mldonkey.GuiLogger;
 import ch.scaille.mldonkey.MLDonkeyGui;
 import ch.scaille.mldonkey.model.Server;
 import ch.scaille.mldonkey.protocol.IReceivedMessage;
@@ -14,7 +14,7 @@ import ch.scaille.mldonkey.protocol.types.MlInt32;
 
 public class ServerState extends AbstractMlTypeContainer implements IReceivedMessage {
 	
-	private static final MDLogger LOGGER = new MDLogger(ServerState.class);
+	private static final GuiLogger LOGGER = new GuiLogger(ServerState.class);
 	
 	private final MlInt32 identifier = new MlInt32();
 	private final MlHostState hostState = new MlHostState();

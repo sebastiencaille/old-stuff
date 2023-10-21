@@ -18,7 +18,7 @@ import ch.scaille.mldonkey.protocol.core.MessageFactory;
 
 public class CoreConnection {
 
-	private static final MDLogger LOGGER = new MDLogger(CoreConnection.class);
+	private static final GuiLogger LOGGER = new GuiLogger(CoreConnection.class);
 
 	private final MLDonkeyGui gui;
 	private SocketChannel socket;

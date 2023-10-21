@@ -21,7 +21,7 @@ import ch.scaille.util.helpers.JavaExt;
 
 public class BlackListManager {
 	
-	private static final MDLogger LOGGER = new MDLogger(BlackListManager.class);
+	private static final GuiLogger LOGGER = new GuiLogger(BlackListManager.class);
 	
 	
 	private final Map<String, Date> allEntries = new ConcurrentHashMap<>();

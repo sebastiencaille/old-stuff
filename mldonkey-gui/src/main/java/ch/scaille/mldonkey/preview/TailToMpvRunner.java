@@ -25,7 +25,7 @@ import javax.swing.SwingUtilities;
 import ch.scaille.gui.mvc.ControllerPropertyChangeSupport;
 import ch.scaille.gui.mvc.GuiModel;
 import ch.scaille.gui.mvc.IPropertiesGroup;
-import ch.scaille.mldonkey.MDLogger;
+import ch.scaille.mldonkey.GuiLogger;
 import ch.scaille.mldonkey.model.FileDownload;
 
 /**
@@ -33,7 +33,7 @@ import ch.scaille.mldonkey.model.FileDownload;
  */
 public class TailToMpvRunner extends AbstractPreview {
 
-	private static final MDLogger LOGGER = new MDLogger(TailToMpvRunner.class);
+	private static final GuiLogger LOGGER = new GuiLogger(TailToMpvRunner.class);
 	
 	private final Random random = new Random(System.currentTimeMillis());
 

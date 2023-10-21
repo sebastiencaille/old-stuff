@@ -3,7 +3,7 @@
  */
 package ch.scaille.mldonkey.protocol.core;
 
-import ch.scaille.mldonkey.MDLogger;
+import ch.scaille.mldonkey.GuiLogger;
 import ch.scaille.mldonkey.MLDonkeyGui;
 import ch.scaille.mldonkey.model.SharedFile;
 import ch.scaille.mldonkey.protocol.IReceivedMessage;
@@ -16,7 +16,7 @@ import ch.scaille.mldonkey.protocol.types.MlString;
 
 public class SharedFileInfo extends AbstractMlTypeContainer implements IReceivedMessage {
 	
-	private static final MDLogger LOGGER = new MDLogger(SharedFileInfo.class);
+	private static final GuiLogger LOGGER = new GuiLogger(SharedFileInfo.class);
 	
 	private final MlInt32 sharedFileIdentifier = new MlInt32();
 	private final MlInt32 networkIdentifier = new MlInt32();

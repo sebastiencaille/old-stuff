@@ -5,7 +5,7 @@ package ch.scaille.mldonkey.protocol.core;
 
 import java.util.ArrayList;
 
-import ch.scaille.mldonkey.MDLogger;
+import ch.scaille.mldonkey.GuiLogger;
 import ch.scaille.mldonkey.MLDonkeyGui;
 import ch.scaille.mldonkey.model.FileQueryResult;
 import ch.scaille.mldonkey.protocol.IReceivedMessage;
@@ -20,7 +20,7 @@ import ch.scaille.mldonkey.protocol.types.MlTag;
 
 public class ResultInfo extends AbstractMlTypeContainer implements IReceivedMessage {
 	
-	private static final MDLogger LOGGER = new MDLogger(ResultInfo.class);
+	private static final GuiLogger LOGGER = new GuiLogger(ResultInfo.class);
 	
 	private final MlInt32 identifier = new MlInt32();
 	private final MlInt32 networkIdentifier = new MlInt32();

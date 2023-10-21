@@ -68,10 +68,11 @@ import ch.scaille.mldonkey.protocol.gui.SearchQuery;
 import ch.scaille.mldonkey.protocol.gui.SetOption;
 import ch.scaille.util.helpers.JavaExt;
 import ch.scaille.util.helpers.Logs;
+import ch.scaille.util.helpers.TupleStream;
 
 public class MLDonkeyGui {
 
-	private static final MDLogger LOGGER = new MDLogger(MLDonkeyGui.class);
+	private static final GuiLogger LOGGER = new GuiLogger(MLDonkeyGui.class);
 
 	public static final long CHUNK_SIZE = 9728000;
 
@@ -79,13 +80,13 @@ public class MLDonkeyGui {
 	private final CoreConnection connection;
 	private Stats stats = new Stats();
 	private FileQuery currentQuery = null;
-	private final ListModel<FileQuery> queries = new ListModel<>(ListViews.sorted());
-	private final ListModel<FileQueryResult> queryResults = new ListModel<>(ListViews.sorted());
-	private final ListModel<FileDownload> downloads = new ListModel<>(ListViews.sorted());
-	private final ListModel<Option> options = new ListModel<>(ListViews.sorted());
-	private final ListModel<Client> clients = new ListModel<>(ListViews.sorted());
-	private final ListModel<Server> servers = new ListModel<>(ListViews.sorted());
-	private final ListModel<SharedFile> sharedFiles = new ListModel<>(ListViews.sorted());
+	private final ListModel<FileQuery> queries = new ListModel<>(ListViews.<FileQuery>sorted());
+	private final ListModel<FileQueryResult> queryResults = new ListModel<>(ListViews.<FileQueryResult>sorted());
+	private final ListModel<FileDownload> downloads = new ListModel<>(ListViews.<FileDownload>sorted());
+	private final ListModel<Option> options = new ListModel<>(ListViews.<Option>sorted());
+	private final ListModel<Client> clients = new ListModel<>(ListViews.<Client>sorted());
+	private final ListModel<Server> servers = new ListModel<>(ListViews.<Server>sorted());
+	private final ListModel<SharedFile> sharedFiles = new ListModel<>(ListViews.<SharedFile>sorted());
 	private final Set<String> downloadedIdentifiers = new HashSet<>();
 	private final WarnListManager warningManager;
 	private final RefreshManager<Integer> downloadsRefresh = new RefreshManager<>(this.timer, 10000, 5000,
@@ -149,7 +150,7 @@ public class MLDonkeyGui {
 
 			@Override
 			public void valuesRemoved(final ListEvent<Client> event) {
-				event.getObjects().stream().collect(BiStream.entries(Client::getDownloads)).//
+				event.getObjects().stream().collect(TupleStream.streamOfList(Client::getDownloads)).//
 						forEach((client, download) -> MLDonkeyGui.this.downloads.editValue(download,
 								d -> d.removeAvailability(client)));
 			}

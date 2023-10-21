@@ -3,7 +3,7 @@
  */
 package ch.scaille.mldonkey.protocol.core;
 
-import ch.scaille.mldonkey.MDLogger;
+import ch.scaille.mldonkey.GuiLogger;
 import ch.scaille.mldonkey.MLDonkeyGui;
 import ch.scaille.mldonkey.protocol.IReceivedMessage;
 import ch.scaille.mldonkey.protocol.types.AbstractMlTypeContainer;
@@ -11,7 +11,7 @@ import ch.scaille.mldonkey.protocol.types.IMlType;
 
 public class BadPassword extends AbstractMlTypeContainer implements IReceivedMessage {
 	
-	private static final MDLogger LOGGER = new MDLogger(BadPassword.class);
+	private static final GuiLogger LOGGER = new GuiLogger(BadPassword.class);
 	
 	@Override
 	public short opCode() {

@@ -45,7 +45,7 @@ import ch.scaille.gui.swing.renderers.PercentRenderer;
 import ch.scaille.gui.swing.renderers.RatioRenderer;
 import ch.scaille.gui.swing.renderers.SpeedRenderer;
 import ch.scaille.mldonkey.GeoIp;
-import ch.scaille.mldonkey.MDLogger;
+import ch.scaille.mldonkey.GuiLogger;
 import ch.scaille.mldonkey.MLDonkeyGui;
 import ch.scaille.mldonkey.gui.components.ChuncksBar;
 import ch.scaille.mldonkey.gui.renderers.DownloadStateRenderer;
@@ -58,7 +58,7 @@ import ch.scaille.mldonkey.protocol.types.FileState;
 
 public class FileDownloadPanel extends JPanel {
 	
-	private static final MDLogger LOGGER = new MDLogger(FileDownloadPanel.class);
+	private static final GuiLogger LOGGER = new GuiLogger(FileDownloadPanel.class);
 	
 	private final FileDownloadHmiController downloadController;
 

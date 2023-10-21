@@ -18,11 +18,11 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import ch.scaille.mldonkey.MDLogger;
+import ch.scaille.mldonkey.GuiLogger;
 
 public abstract class AbstractPreview {
 	
-	private static final MDLogger LOGGER = new MDLogger(AbstractPreview.class);
+	private static final GuiLogger LOGGER = new GuiLogger(AbstractPreview.class);
 
 	
 	protected final File tmp;

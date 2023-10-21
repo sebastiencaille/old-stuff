@@ -3,7 +3,7 @@
  */
 package ch.scaille.mldonkey.protocol.core;
 
-import ch.scaille.mldonkey.MDLogger;
+import ch.scaille.mldonkey.GuiLogger;
 import ch.scaille.mldonkey.MLDonkeyGui;
 import ch.scaille.mldonkey.protocol.IReceivedMessage;
 import ch.scaille.mldonkey.protocol.types.AbstractMlTypeContainer;
@@ -12,7 +12,7 @@ import ch.scaille.mldonkey.protocol.types.MlInt32;
 
 public class SearchWaiting extends AbstractMlTypeContainer implements IReceivedMessage {
 	
-	private static final MDLogger LOGGER = new MDLogger(SearchWaiting.class);
+	private static final GuiLogger LOGGER = new GuiLogger(SearchWaiting.class);
 	
 	private final MlInt32 id1 = new MlInt32();
 	private final MlInt32 id2 = new MlInt32();

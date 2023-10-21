@@ -3,7 +3,7 @@
  */
 package ch.scaille.mldonkey.protocol.core;
 
-import ch.scaille.mldonkey.MDLogger;
+import ch.scaille.mldonkey.GuiLogger;
 import ch.scaille.mldonkey.MLDonkeyGui;
 import ch.scaille.mldonkey.model.FileDownload;
 import ch.scaille.mldonkey.model.SharedFile;
@@ -15,7 +15,7 @@ import ch.scaille.mldonkey.protocol.types.MlList;
 
 public class DownloadedFiles extends AbstractMlTypeContainer implements IReceivedMessage {
 	
-	private static final MDLogger LOGGER = new MDLogger(DownloadedFiles.class);
+	private static final GuiLogger LOGGER = new GuiLogger(DownloadedFiles.class);
 	
 	private final MlList files = new MlList(MlFileInfo.class);
 

@@ -4,7 +4,7 @@
 package ch.scaille.mldonkey.gui.console;
 
 import ch.scaille.gui.mvc.GuiModel;
-import ch.scaille.gui.mvc.properties.ObjectProperty;
+import ch.scaille.javabeans.properties.ObjectProperty;
 
 public class ConsoleModel extends GuiModel {
 	private final ObjectProperty<String> console = new ObjectProperty<>("Console", this, "");

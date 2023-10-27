@@ -4,9 +4,9 @@
 package ch.scaille.mldonkey.gui.shared;
 
 import ch.scaille.gui.mvc.GuiModel;
-import ch.scaille.gui.mvc.properties.BooleanProperty;
-import ch.scaille.gui.mvc.properties.ListProperty;
-import ch.scaille.gui.mvc.properties.ObjectProperty;
+import ch.scaille.javabeans.properties.BooleanProperty;
+import ch.scaille.javabeans.properties.ListProperty;
+import ch.scaille.javabeans.properties.ObjectProperty;
 import ch.scaille.mldonkey.model.SharedFile;
 
 public class SharedFilePanelModel extends GuiModel {

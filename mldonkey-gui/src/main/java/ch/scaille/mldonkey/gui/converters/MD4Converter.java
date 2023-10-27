@@ -3,7 +3,7 @@
  */
 package ch.scaille.mldonkey.gui.converters;
 
-import ch.scaille.gui.mvc.converters.IConverter;
+import ch.scaille.javabeans.converters.IConverter;
 
 public class MD4Converter implements IConverter<byte[], String> {
 	@Override

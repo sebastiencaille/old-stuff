@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import ch.scaille.gui.model.IListModelListener;
-import ch.scaille.gui.mvc.factories.Converters;
+import ch.scaille.javabeans.Converters;
 import ch.scaille.mldonkey.MLDonkeyGui;
 import ch.scaille.mldonkey.gui.clients.ClientsView;
 import ch.scaille.mldonkey.gui.config.OptionsPanel;

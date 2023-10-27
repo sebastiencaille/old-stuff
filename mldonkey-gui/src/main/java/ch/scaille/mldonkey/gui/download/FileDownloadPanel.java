@@ -5,12 +5,12 @@ package ch.scaille.mldonkey.gui.download;
 
 import static ch.scaille.gui.model.IListModelListener.editionStopped;
 import static ch.scaille.gui.model.IListModelListener.editionStopping;
-import static ch.scaille.gui.mvc.factories.BindingDependencies.preserveOnUpdateOf;
-import static ch.scaille.gui.mvc.factories.Converters.listen;
 import static ch.scaille.gui.swing.factories.SwingBindings.multipleSelection;
 import static ch.scaille.gui.swing.factories.SwingBindings.selected;
 import static ch.scaille.gui.swing.factories.SwingBindings.selection;
 import static ch.scaille.gui.swing.factories.SwingBindings.values;
+import static ch.scaille.gui.swing.factories.BindingDependencies.preserveOnUpdateOf;
+import static ch.scaille.javabeans.Converters.listen;
 import static java.util.stream.Collectors.joining;
 
 import java.awt.BorderLayout;
@@ -34,8 +34,6 @@ import javax.swing.JTable;
 
 import ch.scaille.gui.model.views.AbstractDynamicView;
 import ch.scaille.gui.model.views.ListViews;
-import ch.scaille.gui.mvc.IComponentBinding;
-import ch.scaille.gui.mvc.properties.ObjectProperty;
 import ch.scaille.gui.swing.AbstractJTablePopup;
 import ch.scaille.gui.swing.JTableHelper;
 import ch.scaille.gui.swing.jtable.PolicyTableColumnModel;
@@ -44,6 +42,8 @@ import ch.scaille.gui.swing.model.ListModelTableModel;
 import ch.scaille.gui.swing.renderers.PercentRenderer;
 import ch.scaille.gui.swing.renderers.RatioRenderer;
 import ch.scaille.gui.swing.renderers.SpeedRenderer;
+import ch.scaille.javabeans.IComponentBinding;
+import ch.scaille.javabeans.properties.ObjectProperty;
 import ch.scaille.mldonkey.GeoIp;
 import ch.scaille.mldonkey.GuiLogger;
 import ch.scaille.mldonkey.MLDonkeyGui;

@@ -5,7 +5,7 @@ package ch.scaille.mldonkey.gui.clients;
 
 import ch.scaille.gui.model.views.ListViews;
 import ch.scaille.gui.mvc.GuiModel;
-import ch.scaille.gui.mvc.properties.ObjectProperty;
+import ch.scaille.javabeans.properties.ObjectProperty;
 import ch.scaille.mldonkey.MLDonkeyGui;
 import ch.scaille.mldonkey.model.Client;
 

@@ -4,7 +4,7 @@
 package ch.scaille.mldonkey.preview;
 
 import ch.scaille.gui.mvc.GuiModel;
-import ch.scaille.gui.mvc.properties.LongProperty;
+import ch.scaille.javabeans.properties.LongProperty;
 
 public class TailRunnerModel extends GuiModel {
 	protected final LongProperty pos = new LongProperty("Pos", this);

@@ -14,9 +14,9 @@ import java.beans.PropertyChangeListener;
 import javax.swing.JComponent;
 
 import ch.scaille.gui.mvc.ComponentBindingAdapter;
-import ch.scaille.gui.mvc.IComponentBinding;
 import ch.scaille.gui.mvc.factories.ComponentBindings;
-import ch.scaille.gui.mvc.properties.AbstractProperty;
+import ch.scaille.javabeans.IComponentBinding;
+import ch.scaille.javabeans.properties.AbstractProperty;
 
 public class ChuncksBar extends JComponent {
 	private String value = "0";

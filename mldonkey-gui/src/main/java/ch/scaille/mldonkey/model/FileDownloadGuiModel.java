@@ -1,23 +1,23 @@
-// File generated from template 2023/10/14 03:10:40
+// File generated from template 2023/10/27 12:17:47
 package ch.scaille.mldonkey.model;
 
 import java.util.Arrays;
 import ch.scaille.gui.mvc.GuiModel;
-import ch.scaille.gui.mvc.IComponentBinding;
-import ch.scaille.gui.mvc.IComponentLink;
 import ch.scaille.gui.mvc.IObjectGuiModel;
-import ch.scaille.gui.mvc.factories.Persisters;
-import ch.scaille.gui.mvc.persisters.ObjectProviderPersister;
-import ch.scaille.gui.mvc.properties.AbstractProperty;
-import ch.scaille.gui.mvc.properties.Configuration;
-import ch.scaille.gui.mvc.properties.BooleanProperty;
-import ch.scaille.gui.mvc.properties.LongProperty;
-import ch.scaille.gui.mvc.properties.FloatProperty;
-import ch.scaille.gui.mvc.properties.MapProperty;
-import ch.scaille.gui.mvc.properties.IntProperty;
-import ch.scaille.gui.mvc.properties.SetProperty;
-import ch.scaille.gui.mvc.properties.ListProperty;
-import ch.scaille.gui.mvc.properties.ObjectProperty;
+import ch.scaille.javabeans.IComponentBinding;
+import ch.scaille.javabeans.IComponentLink;
+import ch.scaille.javabeans.persisters.Persisters;
+import ch.scaille.javabeans.persisters.ObjectProviderPersister;
+import ch.scaille.javabeans.properties.AbstractProperty;
+import ch.scaille.javabeans.properties.Configuration;
+import ch.scaille.javabeans.properties.BooleanProperty;
+import ch.scaille.javabeans.properties.LongProperty;
+import ch.scaille.javabeans.properties.ObjectProperty;
+import ch.scaille.javabeans.properties.SetProperty;
+import ch.scaille.javabeans.properties.FloatProperty;
+import ch.scaille.javabeans.properties.ListProperty;
+import ch.scaille.javabeans.properties.IntProperty;
+import ch.scaille.javabeans.properties.MapProperty;
 
 public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<FileDownload> {
    

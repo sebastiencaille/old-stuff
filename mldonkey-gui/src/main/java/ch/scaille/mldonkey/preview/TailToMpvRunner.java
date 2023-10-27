@@ -22,9 +22,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import ch.scaille.gui.mvc.ControllerPropertyChangeSupport;
 import ch.scaille.gui.mvc.GuiModel;
-import ch.scaille.gui.mvc.IPropertiesGroup;
+import ch.scaille.javabeans.PropertyChangeSupportController;
+import ch.scaille.javabeans.IPropertiesGroup;
 import ch.scaille.mldonkey.GuiLogger;
 import ch.scaille.mldonkey.model.FileDownload;
 
@@ -48,7 +48,7 @@ public class TailToMpvRunner extends AbstractPreview {
 
 	public TailToMpvRunner(final File tmp, final FileDownload download, final String fileCmdOutput, final String info) {
 		super(tmp, info);
-		this.support = new ControllerPropertyChangeSupport(this).scoped(this);
+		this.support = new PropertyChangeSupportController(this).scoped(this);
 		this.model = new TailRunnerModel(GuiModel.with(this.support));
 		this.download = download;
 		this.fileCmdOutput = fileCmdOutput;

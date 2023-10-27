@@ -4,8 +4,8 @@
 package ch.scaille.mldonkey.gui.servers;
 
 import ch.scaille.gui.mvc.GuiModel;
-import ch.scaille.gui.mvc.properties.BooleanProperty;
-import ch.scaille.gui.mvc.properties.ObjectProperty;
+import ch.scaille.javabeans.properties.BooleanProperty;
+import ch.scaille.javabeans.properties.ObjectProperty;
 import ch.scaille.mldonkey.model.Server;
 
 public class ServerPanelModel extends GuiModel {

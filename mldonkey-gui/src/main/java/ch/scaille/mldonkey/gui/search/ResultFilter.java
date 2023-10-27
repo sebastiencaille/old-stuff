@@ -6,7 +6,7 @@ package ch.scaille.mldonkey.gui.search;
 import java.util.function.Predicate;
 
 import ch.scaille.gui.model.views.AbstractDynamicView;
-import ch.scaille.gui.mvc.IComponentBinding;
+import ch.scaille.javabeans.IComponentBinding;
 import ch.scaille.mldonkey.model.FileQueryResult;
 import ch.scaille.mldonkey.model.WarningLevel;
 

@@ -3,10 +3,10 @@
  */
 package ch.scaille.mldonkey.gui.shared;
 
-import static ch.scaille.gui.mvc.factories.BindingDependencies.preserveOnUpdateOf;
 import static ch.scaille.gui.swing.factories.SwingBindings.multipleSelection;
 import static ch.scaille.gui.swing.factories.SwingBindings.selection;
 import static ch.scaille.gui.swing.jtable.TableColumnWithPolicy.fixedTextWidth;
+import static ch.scaille.gui.swing.factories.BindingDependencies.preserveOnUpdateOf;
 
 import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;

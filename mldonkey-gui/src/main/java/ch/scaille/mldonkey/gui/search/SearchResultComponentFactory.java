@@ -3,12 +3,12 @@
  */
 package ch.scaille.mldonkey.gui.search;
 
-import static ch.scaille.gui.mvc.factories.BindingDependencies.preserveOnUpdateOf;
 import static ch.scaille.gui.swing.factories.SwingBindings.multipleSelection;
 import static ch.scaille.gui.swing.factories.SwingBindings.selection;
 import static ch.scaille.gui.swing.jtable.TableColumnWithPolicy.fixedTextWidth;
 import static ch.scaille.gui.swing.jtable.TableColumnWithPolicy.fixedWidth;
 import static ch.scaille.gui.swing.jtable.TableColumnWithPolicy.percentOfAvailableSpace;
+import static ch.scaille.gui.swing.factories.BindingDependencies.preserveOnUpdateOf;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -22,9 +22,9 @@ import javax.swing.JTable;
 
 import ch.scaille.gui.model.ListModel;
 import ch.scaille.gui.model.views.ListViews;
-import ch.scaille.gui.mvc.IBindingController;
 import ch.scaille.gui.swing.AbstractJTablePopup;
 import ch.scaille.gui.swing.jtable.PolicyTableColumnModel;
+import ch.scaille.javabeans.IBindingController;
 import ch.scaille.mldonkey.gui.renderers.MlSizeRenderer;
 import ch.scaille.mldonkey.gui.renderers.WarningRenderer;
 import ch.scaille.mldonkey.model.FileQuery;

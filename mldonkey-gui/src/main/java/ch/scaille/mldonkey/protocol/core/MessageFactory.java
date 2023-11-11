@@ -5,9 +5,9 @@ package ch.scaille.mldonkey.protocol.core;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import ch.scaille.mldonkey.protocol.IReceivedMessage;
-import ch.scaille.util.helpers.Logs;
 
 public class MessageFactory {
 
@@ -16,14 +16,13 @@ public class MessageFactory {
 
 	private static final Map<Short, IReceivedMessage> messages = new HashMap<>();
 
-	public static IReceivedMessage createMessage(final short opcode) {
+	public static Optional<IReceivedMessage> createMessage(final short opcode) {
 		final var message = messages.get(opcode);
 		if (message == null) {
-			Logs.of(MessageFactory.class).info(() -> "Unhandled opcode: " + opcode);
-			return null;
+			return Optional.empty();
 		}
 		try {
-			return message.getClass().getDeclaredConstructor().newInstance();
+			return Optional.of(message.getClass().getDeclaredConstructor().newInstance());
 		} catch (final Exception e) {
 			throw new IllegalStateException("Cannot create message " + message.getClass(), e);
 		}

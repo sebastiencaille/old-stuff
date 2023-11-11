@@ -87,7 +87,7 @@ public class FileQueryGuiModel extends GuiModel implements IObjectGuiModel<FileQ
     }
 
     public IComponentBinding<FileQuery> loadBinding() {
-        return new IComponentBinding<FileQuery>() {
+        return new IComponentBinding<>() {
         
             @Override
             public void addComponentValueChangeListener(final IComponentLink<FileQuery> link) {

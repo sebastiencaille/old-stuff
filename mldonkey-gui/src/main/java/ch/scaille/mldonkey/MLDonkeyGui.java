@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.Timer;
 import java.util.function.Consumer;
@@ -299,20 +300,20 @@ public class MLDonkeyGui {
 		if (download.getDownloadedSize() == 0) {
 			return;
 		}
-		final var tempFile = this.getTempName(download);
-		if (offset >= 0) {
-			PreviewFactory.createPreview(download, tempFile).preview(this.mainFrame, offset);
-		} else {
-			PreviewFactory.create(download, tempFile).preview(this.mainFrame, -1);
-		}
+		this.getTempFile(download).ifPresent(tempFile -> {
+			if (offset >= 0) {
+				PreviewFactory.createPreview(download, tempFile).preview(this.mainFrame, offset);
+			} else {
+				PreviewFactory.create(download, tempFile).preview(this.mainFrame, -1);
+			}
+		});
 	}
 
 	public void view(final FileDownload download) {
 		if (download.getDownloadedSize() == 0) {
 			return;
 		}
-		final var tempFile = this.getTempName(download);
-		new MPlayerRunner(tempFile, download.getName()).preview(this.mainFrame, 0);
+		this.getTempFile(download).ifPresent(f -> new MPlayerRunner(f, download.getName()).preview(this.mainFrame, 0));
 	}
 
 	private void preview(final File file) {
@@ -327,11 +328,11 @@ public class MLDonkeyGui {
 		}
 	}
 
-	private File getTempName(final FileDownload download) {
+	private Optional<File> getTempFile(final FileDownload download) {
 		if (download.getIdentifiers().isEmpty()) {
-			return null;
+			return Optional.empty();
 		}
-		return new File(this.temp, download.getIdentifiers().get(0).replace(':', '_'));
+		return Optional.of(new File(this.temp, download.getIdentifiers().get(0).replace(':', '_')));
 	}
 
 	public void killPreview() {
@@ -387,14 +388,14 @@ public class MLDonkeyGui {
 
 	private void refreshDownloads() {
 		for (final var download : this.downloads) {
-			File file;
+			var file = this.getTempFile(download);
 			if (download.getChunks().length() == 0 || download.getChunks().charAt(0) == '0' || download.isHasFirstByte()
-					|| (file = this.getTempName(download)) == null || !file.exists()) {
+					|| !file.map(File::exists).isEmpty()) {
 				continue;
 			}
 
 			// Check if first bytes available
-			try (var in = new FileInputStream(file)) {
+			try (var in = new FileInputStream(file.orElseThrow())) {
 				final var buffer = new byte[10];
 				final int len = in.read(buffer);
 				for (int i = 0; i < len; i++) {
@@ -487,15 +488,15 @@ public class MLDonkeyGui {
 		this.connection.sendMessage(new KillServer());
 	}
 
-	public File getFile(final SharedFile value) {
+	public Optional<File> getFile(final SharedFile value) {
 		if (value.getName() == null) {
-			return null;
+			return Optional.empty();
 		}
 		final var file = new File(this.incoming, value.getName());
 		if (!file.exists()) {
-			return null;
+			return Optional.empty();
 		}
-		return file;
+		return Optional.of(file);
 	}
 
 	public void test() {
@@ -554,11 +555,11 @@ public class MLDonkeyGui {
 	private void updateSharedFiles() {
 		for (final var sharedFile : this.sharedFiles) {
 			final var localFile = this.getFile(sharedFile);
-			
-			if (localFile != null && sharedFile.getTimestamp() == 0) {
-				this.sharedFiles.editValue(sharedFile, f -> f.setTimestamp(localFile.lastModified()));
-				
-			} else if (localFile == null && sharedFile.getTimestamp() > 0) {
+
+			if (localFile.isPresent() && sharedFile.getTimestamp() == 0) {
+				this.sharedFiles.editValue(sharedFile, f -> f.setTimestamp(localFile.get().lastModified()));
+
+			} else if (localFile.isEmpty() && sharedFile.getTimestamp() > 0) {
 				this.sharedFiles.remove(sharedFile);
 			}
 		}

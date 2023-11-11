@@ -102,21 +102,21 @@ public class CoreConnection {
 		final var msgBuffer = ByteBuffer.allocate(size);
 		this.readBuffer("message", input, msgBuffer);
 		final var opCode = msgBuffer.getShort();
-		final var message = MessageFactory.createMessage(opCode);
-		if (message == null) {
+		return MessageFactory.createMessage(opCode).map(message -> {
+			message.log(() -> "gui> received " + message.getClass().getSimpleName() + "/" + size);
+			try {
+				message.decodeFrom(msgBuffer);
+			} catch (final BufferUnderflowException e) {
+				LOGGER.log("Unable to read message, index=" + message.getErrorIndex(), e);
+			}
+			if (msgBuffer.hasRemaining()) {
+				LOGGER.log("Remains " + (msgBuffer.limit() - msgBuffer.position()) + "/" + msgBuffer.capacity());
+			}
+			return message;
+		}).or(() -> {
 			LOGGER.log("Unhandled opcode: " + opCode);
 			return Optional.empty();
-		}
-		message.log(() -> "gui> received " + message.getClass().getSimpleName() + "/" + size);
-		try {
-			message.decodeFrom(msgBuffer);
-		} catch (final BufferUnderflowException e) {
-			LOGGER.log("Unable to read message, index=" + message.getErrorIndex(), e);
-		}
-		if (msgBuffer.hasRemaining()) {
-			LOGGER.log("Remains " + (msgBuffer.limit() - msgBuffer.position()) + "/" + msgBuffer.capacity());
-		}
-		return Optional.of(message);
+		});
 	}
 
 	private void notifyDisconnected() {

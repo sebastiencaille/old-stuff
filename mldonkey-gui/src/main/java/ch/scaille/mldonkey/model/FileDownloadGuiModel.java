@@ -282,7 +282,7 @@ public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<Fi
     }
 
     public IComponentBinding<FileDownload> loadBinding() {
-        return new IComponentBinding<FileDownload>() {
+        return new IComponentBinding<>() {
         
             @Override
             public void addComponentValueChangeListener(final IComponentLink<FileDownload> link) {

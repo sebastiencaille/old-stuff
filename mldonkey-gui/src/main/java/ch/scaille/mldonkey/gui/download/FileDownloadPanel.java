@@ -5,13 +5,12 @@ package ch.scaille.mldonkey.gui.download;
 
 import static ch.scaille.gui.model.IListModelListener.editionStopped;
 import static ch.scaille.gui.model.IListModelListener.editionStopping;
+import static ch.scaille.gui.swing.factories.BindingDependencies.preserveOnUpdateOf;
 import static ch.scaille.gui.swing.factories.SwingBindings.multipleSelection;
 import static ch.scaille.gui.swing.factories.SwingBindings.selected;
 import static ch.scaille.gui.swing.factories.SwingBindings.selection;
 import static ch.scaille.gui.swing.factories.SwingBindings.values;
-import static ch.scaille.gui.swing.factories.BindingDependencies.preserveOnUpdateOf;
 import static ch.scaille.javabeans.Converters.listen;
-import static java.util.stream.Collectors.joining;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -21,6 +20,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Collection;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -147,7 +147,7 @@ public class FileDownloadPanel extends JPanel {
 		detailsPanel.add(countries);
 		this.downloadController.model
 				.getAvailabilitiesProperty().bind(listen(a -> a.keySet().stream()
-						.map(client -> GeoIp.getCounty(client.getGeoIp())).distinct().collect(joining(", "))))
+						.map(client -> GeoIp.getCounty(client.getGeoIp())).distinct().collect(Collectors.joining(", "))))
 				.listen(countries::setText);
 		this.add(detailsPanel, BorderLayout.SOUTH);
 		this.downloadController.activate();

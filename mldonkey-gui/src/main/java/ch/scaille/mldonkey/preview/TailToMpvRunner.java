@@ -189,20 +189,7 @@ public class TailToMpvRunner extends AbstractPreview {
 				if (previewThread != null) {
 					previewThread.interrupt();
 				}
-				this.previewThread = new Thread(() -> {
-					final var file = new File(this.getFileName());
-					try (final var raf = new RandomAccessFile(file, "r")) {
-						while (!closed) {
-							final long pos = random.nextLong() % download.getFileSize();
-							SwingUtilities.invokeLater(() -> model.pos.setValue(this, pos));
-							if (checkFile(raf, pos)) {
-								TailToMpvRunner.this.doPreview(pos, false);
-							}
-						}
-					} catch (final IOException ex) {
-						ex.printStackTrace();
-					}
-				});
+				this.previewThread = new Thread(this::previewRandomPosition);
 				previewThread.start();
 				return;
 			}
@@ -211,24 +198,37 @@ public class TailToMpvRunner extends AbstractPreview {
 			if (TailToMpvRunner.this.previewThread != null) {
 				return;
 			}
-			TailToMpvRunner.this.previewThread = new Thread() {
-
-				@Override
-				public void run() {
-					try {
-						long pos = 0;
-						if (TailToMpvRunner.this.download.getChunks().charAt(0) == '0') {
-							pos = TailToMpvRunner.this.skipToNextChunckWithContent(pos);
-						}
-						TailToMpvRunner.this.doPreview(pos, true);
-					} finally {
-						button.setEnabled(true);
-						TailToMpvRunner.this.previewThread = null;
-					}
-				}
-			};
+			TailToMpvRunner.this.previewThread = new Thread(() -> previewFirstData(button));
 			TailToMpvRunner.this.previewThread.start();
 		};
+	}
+
+	private void previewRandomPosition() {
+		final var file = new File(this.getFileName());
+		try (final var raf = new RandomAccessFile(file, "r")) {
+			while (!closed) {
+				final long pos = random.nextLong() % download.getFileSize();
+				SwingUtilities.invokeLater(() -> model.pos.setValue(this, pos));
+				if (checkFile(raf, pos)) {
+					TailToMpvRunner.this.doPreview(pos, false);
+				}
+			}
+		} catch (final IOException ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	private void previewFirstData(final JButton button) {
+		try {
+			long pos = 0;
+			if (TailToMpvRunner.this.download.getChunks().charAt(0) == '0') {
+				pos = TailToMpvRunner.this.skipToNextChunckWithContent(pos);
+			}
+			TailToMpvRunner.this.doPreview(pos, true);
+		} finally {
+			button.setEnabled(true);
+			TailToMpvRunner.this.previewThread = null;
+		}
 	}
 
 	private ActionListener next() {

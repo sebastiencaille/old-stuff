@@ -7,8 +7,8 @@ import ch.scaille.javabeans.BindingSelector;
 import ch.scaille.javabeans.properties.BooleanProperty;
 import ch.scaille.javabeans.properties.ListProperty;
 import ch.scaille.javabeans.properties.ObjectProperty;
+import ch.scaille.mldonkey.gui.model.FileQueryGuiModel;
 import ch.scaille.mldonkey.gui.search.SearchResultComponentFactory.SearchResult;
-import ch.scaille.mldonkey.model.FileQueryGuiModel;
 import ch.scaille.mldonkey.model.FileQueryResult;
 
 public class SearchPanelModel extends FileQueryGuiModel {

@@ -6,8 +6,8 @@ package ch.scaille.mldonkey.gui.download;
 import ch.scaille.javabeans.properties.BooleanProperty;
 import ch.scaille.javabeans.properties.ListProperty;
 import ch.scaille.javabeans.properties.ObjectProperty;
+import ch.scaille.mldonkey.gui.model.FileDownloadGuiModel;
 import ch.scaille.mldonkey.model.FileDownload;
-import ch.scaille.mldonkey.model.FileDownloadGuiModel;
 
 class FileDownloadModel extends FileDownloadGuiModel {
 	final ObjectProperty<FileDownload> lastSelectedDownload;

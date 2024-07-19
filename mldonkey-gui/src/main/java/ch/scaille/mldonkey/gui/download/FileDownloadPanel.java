@@ -84,20 +84,20 @@ public class FileDownloadPanel extends JPanel {
 		downloadsTable.setColumnModel(columnModel);
 		columnModel.configureColumn(
 				TableColumnWithPolicy.percentOfAvailableSpace(FileDownloadTableModel.Columns.FILENAME, 100));
-		columnModel.configureColumn(TableColumnWithPolicy.fixedTextWidth(FileDownloadTableModel.Columns.WARNING, 2)
+		columnModel.configureColumn(TableColumnWithPolicy.fixedTextLength(FileDownloadTableModel.Columns.WARNING, 2)
 				.with(new WarningRenderer()));
-		columnModel.configureColumn(TableColumnWithPolicy.fixedTextWidth(FileDownloadTableModel.Columns.AVAILABILITY, 8)
+		columnModel.configureColumn(TableColumnWithPolicy.fixedTextLength(FileDownloadTableModel.Columns.AVAILABILITY, 8)
 				.with(new PercentRenderer()));
 		columnModel.configureColumn(
-				TableColumnWithPolicy.fixedTextWidth(FileDownloadTableModel.Columns.NOW, 8).with(new PercentRenderer()));
+				TableColumnWithPolicy.fixedTextLength(FileDownloadTableModel.Columns.NOW, 8).with(new PercentRenderer()));
 		columnModel.configureColumn(
-				TableColumnWithPolicy.fixedTextWidth(FileDownloadTableModel.Columns.RATIO, 8).with(new RatioRenderer()));
+				TableColumnWithPolicy.fixedTextLength(FileDownloadTableModel.Columns.RATIO, 8).with(new RatioRenderer()));
 		columnModel.configureColumn(
-				TableColumnWithPolicy.fixedTextWidth(FileDownloadTableModel.Columns.SIZE, 10).with(new MlSizeRenderer()));
-		columnModel.configureColumn(TableColumnWithPolicy.fixedTextWidth(FileDownloadTableModel.Columns.SOURCES, 48));
+				TableColumnWithPolicy.fixedTextLength(FileDownloadTableModel.Columns.SIZE, 10).with(new MlSizeRenderer()));
+		columnModel.configureColumn(TableColumnWithPolicy.fixedTextLength(FileDownloadTableModel.Columns.SOURCES, 48));
 		columnModel.configureColumn(
-				TableColumnWithPolicy.fixedTextWidth(FileDownloadTableModel.Columns.SPEED, 9).with(new SpeedRenderer()));
-		columnModel.configureColumn(TableColumnWithPolicy.fixedTextWidth(FileDownloadTableModel.Columns.STATE, 16)
+				TableColumnWithPolicy.fixedTextLength(FileDownloadTableModel.Columns.SPEED, 9).with(new SpeedRenderer()));
+		columnModel.configureColumn(TableColumnWithPolicy.fixedTextLength(FileDownloadTableModel.Columns.STATE, 16)
 				.with(new DownloadStateRenderer()));
 		downloadsTable.setAutoCreateColumnsFromModel(false);
 		this.downloadController.getLastSelectedDownload().bind(selection(downloadsTable, model));

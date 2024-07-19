@@ -5,7 +5,7 @@ package ch.scaille.mldonkey.gui.search;
 
 import static ch.scaille.gui.swing.factories.SwingBindings.multipleSelection;
 import static ch.scaille.gui.swing.factories.SwingBindings.selection;
-import static ch.scaille.gui.swing.jtable.TableColumnWithPolicy.fixedTextWidth;
+import static ch.scaille.gui.swing.jtable.TableColumnWithPolicy.fixedTextLength;
 import static ch.scaille.gui.swing.jtable.TableColumnWithPolicy.fixedWidth;
 import static ch.scaille.gui.swing.jtable.TableColumnWithPolicy.percentOfAvailableSpace;
 import static ch.scaille.gui.swing.factories.BindingDependencies.preserveOnUpdateOf;
@@ -109,9 +109,9 @@ public class SearchResultComponentFactory {
 
 		table.setColumnModel(columnModel);
 		columnModel.configureColumn(percentOfAvailableSpace(SearchResultModel.Columns.NAME, 100));
-		columnModel.configureColumn(fixedTextWidth(SearchResultModel.Columns.SIZE, 10).with(new MlSizeRenderer()));
-		columnModel.configureColumn(fixedTextWidth(SearchResultModel.Columns.COMPLETE, 8));
-		columnModel.configureColumn(fixedTextWidth(SearchResultModel.Columns.TYPE, 8));
+		columnModel.configureColumn(fixedTextLength(SearchResultModel.Columns.SIZE, 10).with(new MlSizeRenderer()));
+		columnModel.configureColumn(fixedTextLength(SearchResultModel.Columns.COMPLETE, 8));
+		columnModel.configureColumn(fixedTextLength(SearchResultModel.Columns.TYPE, 8));
 		columnModel.configureColumn(fixedWidth(SearchResultModel.Columns.WARNING, 2).with(new WarningRenderer()));
 		table.setAutoCreateColumnsFromModel(false);
 

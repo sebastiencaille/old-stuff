@@ -7,10 +7,12 @@ import static ch.scaille.gui.model.IListModelListener.editionStopped;
 import static ch.scaille.gui.model.IListModelListener.editionStopping;
 
 import java.awt.EventQueue;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -26,6 +28,7 @@ import java.util.Timer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 import java.util.logging.LogManager;
+import java.util.stream.Collectors;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
@@ -67,7 +70,6 @@ import ch.scaille.mldonkey.protocol.gui.RemoveServer;
 import ch.scaille.mldonkey.protocol.gui.Reshare;
 import ch.scaille.mldonkey.protocol.gui.SearchQuery;
 import ch.scaille.mldonkey.protocol.gui.SetOption;
-import ch.scaille.util.helpers.JavaExt;
 import ch.scaille.util.helpers.Logs;
 import ch.scaille.util.helpers.TupleStream;
 
@@ -578,7 +580,7 @@ public class MLDonkeyGui {
 		public void run() {
 			try (var in = this.stream.get()) {
 				if (show) {
-					JavaExt.transferUTF8LineTo(in, c -> Logs.of(MLDonkeyGui.class).info(c));
+					Logs.of(MLDonkeyGui.class).info(new BufferedReader(new InputStreamReader(in)).lines().collect(Collectors.joining("\n")));
 				} else {
 					in.transferTo(OutputStream.nullOutputStream());
 				}

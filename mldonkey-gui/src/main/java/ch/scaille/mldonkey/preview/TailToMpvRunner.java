@@ -33,6 +33,8 @@ import ch.scaille.mldonkey.model.FileDownload;
  */
 public class TailToMpvRunner extends AbstractPreview {
 
+	private static final long CHUNK_SIZE = 9_728_000;
+
 	private static final GuiLogger LOGGER = new GuiLogger(TailToMpvRunner.class);
 	
 	private final Random random = new Random(System.currentTimeMillis());
@@ -251,16 +253,14 @@ public class TailToMpvRunner extends AbstractPreview {
 	}
 
 	protected long skipToNextChunckWithContent(final long pos) {
-		final int chunckCount = (int) (pos / 9728000);
-		float newPos2 = Math.max((long) chunckCount * 9728000, pos);
-		var first = true;
-		for (final char c : this.download.getChunks().substring(chunckCount).toCharArray()) {
+		final int chunckCount = (int) (pos / CHUNK_SIZE);
+		long newPos = 0;
+		for (final var c : this.download.getChunks().substring(chunckCount).toCharArray()) {
 			if (c == '0') {
-				newPos2 = first ? (float) ((long) (chunckCount + 1) * 9728000) : (newPos2 += 9728000.0f);
+				newPos += CHUNK_SIZE;
 			} else {
-				return (long) newPos2;
+				return newPos;
 			}
-			first = false;
 		}
 		return -1;
 	}

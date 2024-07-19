@@ -5,7 +5,7 @@ package ch.scaille.mldonkey.gui.shared;
 
 import static ch.scaille.gui.swing.factories.SwingBindings.multipleSelection;
 import static ch.scaille.gui.swing.factories.SwingBindings.selection;
-import static ch.scaille.gui.swing.jtable.TableColumnWithPolicy.fixedTextWidth;
+import static ch.scaille.gui.swing.jtable.TableColumnWithPolicy.fixedTextLength;
 import static ch.scaille.gui.swing.factories.BindingDependencies.preserveOnUpdateOf;
 
 import java.awt.BorderLayout;
@@ -45,8 +45,8 @@ public class SharedFilesPanel extends JPanel {
 
 		final var columnModel = new PolicyTableColumnModel<SharedFilesTableModel.Columns>(table);
 		table.setColumnModel(columnModel);
-		columnModel.configureColumn(fixedTextWidth(SharedFilesTableModel.Columns.DATE, 16).with(new DateRenderer()));
-		columnModel.configureColumn(fixedTextWidth(SharedFilesTableModel.Columns.SIZE, 10).with(new MlSizeRenderer()));
+		columnModel.configureColumn(fixedTextLength(SharedFilesTableModel.Columns.DATE, 16).with(new DateRenderer()));
+		columnModel.configureColumn(fixedTextLength(SharedFilesTableModel.Columns.SIZE, 10).with(new MlSizeRenderer()));
 		table.setAutoCreateColumnsFromModel(false);
 		
 		this.sharedController.getModel().getLastSelectedShare().bind(selection(table, tableModel));

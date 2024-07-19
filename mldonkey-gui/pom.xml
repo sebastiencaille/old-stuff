@@ -15,6 +15,11 @@
 	<version>${revision}</version>
 	<packaging>jar</packaging>
 
+	<url>https://github.com/sebastiencaille/old-stuff/mldonkey-gui</url>
+	<scm>
+		<url>https://github.com/sebastiencaille/old-stuff/mldonkey-gui</url>
+	</scm>
+
 	<properties>
 		<revision>0.0.1-SNAPSHOT</revision>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -52,6 +57,10 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>flatten-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

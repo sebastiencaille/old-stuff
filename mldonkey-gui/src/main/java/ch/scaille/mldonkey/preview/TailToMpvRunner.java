@@ -224,7 +224,7 @@ public class TailToMpvRunner extends AbstractPreview {
 		try {
 			long pos = 0;
 			if (TailToMpvRunner.this.download.getChunks().charAt(0) == '0') {
-				pos = TailToMpvRunner.this.skipToNextChunckWithContent(pos);
+				pos = TailToMpvRunner.this.skipToNextChunkWithContent(pos);
 			}
 			TailToMpvRunner.this.doPreview(pos, true);
 		} finally {
@@ -248,14 +248,14 @@ public class TailToMpvRunner extends AbstractPreview {
 				return -1L;
 			}
 			final long newPos = pos + this.stepInMb;
-			return this.skipToNextChunckWithContent(newPos);
+			return this.skipToNextChunkWithContent(newPos);
 		}, tryMore);
 	}
 
-	protected long skipToNextChunckWithContent(final long pos) {
-		final int chunckCount = (int) (pos / CHUNK_SIZE);
+	protected long skipToNextChunkWithContent(final long pos) {
+		final int chunkCount = (int) (pos / CHUNK_SIZE);
 		long newPos = 0;
-		for (final var c : this.download.getChunks().substring(chunckCount).toCharArray()) {
+		for (final var c : this.download.getChunks().substring(chunkCount).toCharArray()) {
 			if (c == '0') {
 				newPos += CHUNK_SIZE;
 			} else {

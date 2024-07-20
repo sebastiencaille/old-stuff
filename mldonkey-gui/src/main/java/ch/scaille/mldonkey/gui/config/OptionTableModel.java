@@ -30,7 +30,7 @@ public class OptionTableModel extends ListModelTableModel<Option, OptionTableMod
 	public enum Column {
 		NAME, VALUE;
 
-		private Column() {
+		Column() {
 		}
 	}
 

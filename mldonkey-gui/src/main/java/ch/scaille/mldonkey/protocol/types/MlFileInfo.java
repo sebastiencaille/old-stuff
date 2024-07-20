@@ -15,10 +15,10 @@ public class MlFileInfo extends AbstractMlTypeContainer implements IMlType {
 	private final MlInt32 sourceCount = new MlInt32();
 	private final MlInt32 clientCount = new MlInt32();
 	private final MlFileState state = new MlFileState();
-	private final MlString chuncks = new MlString();
+	private final MlString chunks = new MlString();
 	private final MlList availability = new MlList(MlInt32.class, MlString.class);
 	private final MlFloat downloadRate = new MlFloat();
-	private final MlList chunckAges = new MlList(MlInt32.class);
+	private final MlList chunkAges = new MlList(MlInt32.class);
 	private final MlInt32 age = new MlInt32();
 	private final MlFileFormat format = new MlFileFormat();
 	private final MlString preferredName = new MlString();
@@ -35,8 +35,8 @@ public class MlFileInfo extends AbstractMlTypeContainer implements IMlType {
 	@Override
 	protected IMlType[] createMessageContent() {
 		return new IMlType[] { this.fileId, this.fileNetwork, this.fileNames, this.md4, this.fileSize, this.downloaded,
-				this.sourceCount, this.clientCount, this.state, this.chuncks, this.availability, this.downloadRate,
-				this.chunckAges, this.age, this.format, this.preferredName, this.lastSeenCompleteSeconds,
+				this.sourceCount, this.clientCount, this.state, this.chunks, this.availability, this.downloadRate,
+				this.chunkAges, this.age, this.format, this.preferredName, this.lastSeenCompleteSeconds,
 				this.filePriority, this.comment, this.links, this.subFiles, this.fileFormat, this.geo, this.user,
 				this.group };
 	}
@@ -57,7 +57,7 @@ public class MlFileInfo extends AbstractMlTypeContainer implements IMlType {
 			download.addName(this.fileNames.valueAt(i, MlString.class).value());
 		}
 		download.setNumberOfSources(this.sourceCount.value());
-		download.setChunks(this.chuncks.value());
+		download.setChunks(this.chunks.value());
 		download.setMd4(this.md4.value());
 		for (i = 0; i < this.links.size(); ++i) {
 			download.addLink(this.links.valueAt(i, MlString.class).value());

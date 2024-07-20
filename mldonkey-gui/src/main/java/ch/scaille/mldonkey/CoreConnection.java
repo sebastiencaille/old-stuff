@@ -74,10 +74,10 @@ public class CoreConnection {
 	}
 
 	private void readBuffer(final String name, final SocketChannel input, final ByteBuffer buffer) throws IOException {
-		int aread;
-		for (var read = 0; read < buffer.capacity(); read += aread) {
-			aread = input.read(buffer);
-			if (aread > 0) {
+		int lastRead;
+		for (var read = 0; read < buffer.capacity(); read += lastRead) {
+			lastRead = input.read(buffer);
+			if (lastRead > 0) {
 				continue;
 			}
 			throw new IOException("Unable to read data: " + name);

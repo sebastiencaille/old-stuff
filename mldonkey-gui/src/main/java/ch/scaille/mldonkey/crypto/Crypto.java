@@ -67,16 +67,11 @@ public class Crypto {
 	}
 
 	public String toHex(byte[] array) {
-		var bi = new BigInteger(1, array);
+		final var bi = new BigInteger(1, array);
 		var hex = bi.toString(16);
-		var paddingLength = (array.length * 2) - hex.length();
+		final var paddingLength = (array.length * 2) - hex.length();
 		if (paddingLength > 0) {
-			var builder = new StringBuilder(array.length * 2);
-			for (var i = 0; i < paddingLength; i++) {
-				builder.append('0');
-			}
-			builder.append(hex);
-			hex = builder.toString();
+			hex = "0".repeat(paddingLength) + hex;
 		}
 		return hex;
 	}

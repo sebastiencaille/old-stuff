@@ -9,7 +9,7 @@ public class GeoIp {
 
 	}
 
-	private static String[] countryCodes = new String[] { "--", "AP", "EU", "AD", "AE", "AF", "AG", "AI", "AL", "AM",
+	private static final String[] countryCodes = new String[] { "--", "AP", "EU", "AD", "AE", "AF", "AG", "AI", "AL", "AM",
 			"AN", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ",
 			"BM", "BN", "BO", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK",
 			"CL", "CM", "CN", "CO", "CR", "CU", "CV", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE",

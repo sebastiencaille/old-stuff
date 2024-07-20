@@ -15,7 +15,7 @@ public class PreviewFactory {
 	public static AbstractPreview create(final FileDownload download, final File tmp) {
 		FileType typeByContent;
 		String contentIdentification;
-		if (download.getChunks().length() == 0) {
+		if (download.getChunks().isEmpty()) {
 			return null;
 		}
 		final boolean hasStart = download.getChunks().charAt(0) != '0';
@@ -94,7 +94,7 @@ public class PreviewFactory {
 	private enum FileType {
 		DIVX, MKV, MPG, E3GP, WMV, QT, RAR, FLV, RM, ZIP;
 
-		private FileType() {
+		FileType() {
 		}
 	}
 

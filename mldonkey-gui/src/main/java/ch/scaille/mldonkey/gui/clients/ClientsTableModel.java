@@ -19,7 +19,7 @@ public class ClientsTableModel extends ListModelTableModel<Client, ClientsTableM
 		return switch (column) {
 		case NAME -> object.getName();
 		case GEO -> GeoIp.getCounty(object.getGeoIp());
-		case SOFTWARE -> "" + object.getSoftware() + " " + object.getRelease();
+		case SOFTWARE -> "%s %s".formatted(object.getSoftware(), object.getRelease());
 		case STATE -> object.getState();
 		case FILES -> object.getFileCount();
 		default -> throw new IllegalStateException("Unknown column " + column);
@@ -34,7 +34,7 @@ public class ClientsTableModel extends ListModelTableModel<Client, ClientsTableM
 	public enum Columns {
 		NAME, GEO, FILES, SOFTWARE, STATE;
 
-		private Columns() {
+		Columns() {
 		}
 	}
 

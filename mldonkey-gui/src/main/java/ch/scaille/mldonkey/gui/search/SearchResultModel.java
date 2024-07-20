@@ -16,17 +16,17 @@ public class SearchResultModel extends ListModelTableModel<FileQueryResult, Sear
 	@Override
 	protected Object getValueAtColumn(final FileQueryResult object, final Columns column) {
 		return switch (column) {
-		case NAME -> object.getFileNames().get(0);
+		case NAME -> object.getFileNames().getFirst();
 		case SIZE -> object.getFileSize();
 		case TYPE -> {
-			final String name = object.getFileNames().get(0);
+			final String name = object.getFileNames().getFirst();
 			final int lastDotIndex = name.lastIndexOf(46) + 1;
 			if (lastDotIndex < 0 || name.length() - lastDotIndex > 5) {
 				yield "";
 			}
-			yield name.substring(lastDotIndex, name.length());
+			yield name.substring(lastDotIndex);
 		}
-		case COMPLETE -> "" + object.getAvailability() + "/" + object.completeSources();
+		case COMPLETE -> "%s / %s".formatted(object.getAvailability(), object.completeSources());
 		case WARNING -> object.getWarnings();
 		default -> throw new IllegalStateException("Unknown column " + column);
 		};
@@ -40,7 +40,7 @@ public class SearchResultModel extends ListModelTableModel<FileQueryResult, Sear
 	public enum Columns {
 		TYPE, SIZE, COMPLETE, WARNING, NAME;
 
-		private Columns() {
+		Columns() {
 		}
 	}
 

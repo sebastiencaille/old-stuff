@@ -47,7 +47,7 @@ import ch.scaille.javabeans.properties.ObjectProperty;
 import ch.scaille.mldonkey.GeoIp;
 import ch.scaille.mldonkey.GuiLogger;
 import ch.scaille.mldonkey.MLDonkeyGui;
-import ch.scaille.mldonkey.gui.components.ChuncksBar;
+import ch.scaille.mldonkey.gui.components.ChunksBar;
 import ch.scaille.mldonkey.gui.renderers.DownloadStateRenderer;
 import ch.scaille.mldonkey.gui.renderers.MlSizeRenderer;
 import ch.scaille.mldonkey.gui.renderers.WarningRenderer;
@@ -127,7 +127,7 @@ public class FileDownloadPanel extends JPanel {
 		this.add(filtersPanel, BorderLayout.NORTH);
 
 		final var detailsPanel = new JPanel(new GridLayout(0, 1));
-		final var chunks = new ChuncksBar();
+		final var chunks = new ChunksBar();
 		this.downloadController.model.getChunksProperty().bind(chunks.valueBinding());
 		this.downloadController.model.getFileSizeProperty().bind(chunks.sizeBinding());
 		chunks.addSelectedOffsetListener(
@@ -186,7 +186,7 @@ public class FileDownloadPanel extends JPanel {
 		}
 	}
 
-	private final class MouseClickListener extends MouseAdapter {
+	private static final class MouseClickListener extends MouseAdapter {
 		private final JTable downloadsTable;
 		private final MLDonkeyGui gui;
 		private final FileDownloadTableModel model;

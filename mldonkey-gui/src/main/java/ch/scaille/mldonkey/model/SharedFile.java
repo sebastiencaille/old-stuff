@@ -56,7 +56,7 @@ public class SharedFile implements Comparable<SharedFile> {
 	}
 
 	public void addIdentifiers(final List<String> identifiers2) {
-		this.identifier = identifiers2.iterator().next();
+		this.identifier = identifiers2.getFirst();
 	}
 
 	public String getIdentifier() {

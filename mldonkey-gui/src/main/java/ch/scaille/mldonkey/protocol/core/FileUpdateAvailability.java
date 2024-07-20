@@ -35,8 +35,8 @@ public class FileUpdateAvailability extends AbstractMlTypeContainer implements I
 			final var avail = this.availability.value();
 			var isAvailable = false;
 			for (final var availChunk : avail.toCharArray()) {
-				isAvailable |= availChunk == '1';
-				if (isAvailable) {
+				if (availChunk == '1') {
+					isAvailable = true;
 					break;
 				}
 			}

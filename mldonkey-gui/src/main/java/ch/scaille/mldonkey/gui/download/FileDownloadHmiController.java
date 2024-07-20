@@ -40,7 +40,7 @@ public class FileDownloadHmiController extends GuiController {
 	public ActionListener getCancelFileAction() {
 		return e -> {
 			if (getSelectedDownloads().getValue() != null) {
-				getSelectedDownloads().getValue().stream().forEach(this.gui::cancelDownload);
+				getSelectedDownloads().getValue().forEach(this.gui::cancelDownload);
 			}
 		};
 	}
@@ -50,7 +50,7 @@ public class FileDownloadHmiController extends GuiController {
 	}
 
 	public ActionListener getBlackListFileAction() {
-		return e -> this.model.selectedDownloads.getValue().stream().forEach(download -> {
+		return e -> this.model.selectedDownloads.getValue().forEach(download -> {
 			this.gui.blackList(download);
 			this.gui.cancelDownload(download);
 		});

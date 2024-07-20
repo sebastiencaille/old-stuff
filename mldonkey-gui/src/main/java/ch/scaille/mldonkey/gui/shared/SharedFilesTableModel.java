@@ -35,7 +35,7 @@ public class SharedFilesTableModel extends ListModelTableModel<SharedFile, Share
 	public enum Columns {
 		DATE, FILENAME, SIZE;
 
-		private Columns() {
+		Columns() {
 		}
 	}
 

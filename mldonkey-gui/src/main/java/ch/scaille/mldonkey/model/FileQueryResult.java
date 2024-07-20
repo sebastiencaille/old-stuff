@@ -142,6 +142,6 @@ public class FileQueryResult implements Comparable<FileQueryResult>, IWarnedData
 	@Override
 	public String toString() {
 		return this.getClass().getSimpleName() + ":[id=" + this.id + ", queries=" + this.searchId + "] "
-				+ fileNames.get(0);
+				+ fileNames.getFirst();
 	}
 }

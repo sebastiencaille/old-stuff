@@ -38,12 +38,9 @@ public class MlCharArray implements IMlType {
 	@Override
 	public String toString() {
 		final var builder = new StringBuilder();
-		final var arrby = this.value;
-		final var n = arrby.length;
-		for (var i = 0; i < n; ++i) {
-			final byte bint = arrby[i];
-			builder.append(Integer.toHexString(bint & 255));
-		}
+        for (final byte bint : this.value) {
+            builder.append(Integer.toHexString(bint & 255));
+        }
 		return builder.toString();
 	}
 }

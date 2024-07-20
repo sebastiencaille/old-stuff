@@ -7,9 +7,9 @@ import java.nio.ByteBuffer;
 import java.util.function.Supplier;
 
 public interface ISentMessage extends IMessage {
-	public int messageLength();
+	int messageLength();
 
-	public void encodeInto(ByteBuffer var1);
+	void encodeInto(ByteBuffer var1);
 
-	public void log(Supplier<String> message);
+	void log(Supplier<String> message);
 }

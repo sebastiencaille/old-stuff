@@ -9,11 +9,11 @@ import java.util.function.Supplier;
 import ch.scaille.mldonkey.MLDonkeyGui;
 
 public interface IReceivedMessage extends IMessage {
-	public void decodeFrom(ByteBuffer var1);
+	void decodeFrom(ByteBuffer var1);
 
-	public void handle(MLDonkeyGui var1);
+	void handle(MLDonkeyGui var1);
 
-	public int getErrorIndex();
+	int getErrorIndex();
 
-	public void log(Supplier<String> log);
+	void log(Supplier<String> log);
 }

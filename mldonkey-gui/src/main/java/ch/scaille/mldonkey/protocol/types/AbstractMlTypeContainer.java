@@ -6,7 +6,6 @@ package ch.scaille.mldonkey.protocol.types;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 public abstract class AbstractMlTypeContainer {
 	private IMlType[] content;
@@ -34,8 +33,7 @@ public abstract class AbstractMlTypeContainer {
 	public int messageLength() {
 		this.loadContent();
 		return Arrays.stream(this.content)
-				.filter(this::hasValue)
-				.collect(Collectors.summingInt(IMlType::messageLength));
+                .filter(this::hasValue).mapToInt(IMlType::messageLength).sum();
 	}
 
 	public void encodeInto(final ByteBuffer buffer) {
@@ -91,9 +89,6 @@ public abstract class AbstractMlTypeContainer {
 	/**
 	 * Returns true if the field given in parameter is present according to the
 	 * state of the current node
-	 *
-	 * @param type
-	 * @return
 	 */
 	protected boolean hasValue(final IMlType type) {
 		return true;

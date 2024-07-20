@@ -24,7 +24,7 @@ public class MlFileState extends AbstractMlTypeContainer implements IMlType {
 
 	@Override
 	public String toString() {
-		return this.state.toString() + "(" + this.abortionReason.toString() + ")";
+		return this.state + "(" + this.abortionReason + ")";
 	}
 
 	public void fill(final FileDownload download) {

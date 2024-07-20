@@ -18,12 +18,12 @@ public class FileDownloadTableModel extends ListModelTableModel<FileDownload, Fi
 		case FILENAME -> object.getName();
 		case SOURCES -> object.getNumberOfSources();
 		case SIZE -> object.getFileSize();
-		case SPEED -> Float.valueOf(object.getDownloadRate());
-		case RATIO -> Float.valueOf((float) object.getDownloadedSize() / (float) object.getFileSize());
+		case SPEED -> object.getDownloadRate();
+		case RATIO -> (float) object.getDownloadedSize() / (float) object.getFileSize();
 		case WARNING -> object.getWarnings();
 		case STATE -> object;
-		case AVAILABILITY -> Float.valueOf(object.getAvailability());
-		case NOW -> Float.valueOf(object.getImmediateAvailability());
+		case AVAILABILITY -> object.getAvailability();
+		case NOW -> object.getImmediateAvailability();
 		default -> throw new IllegalStateException("Unknown column " + column);
 		};
 	}
@@ -36,7 +36,7 @@ public class FileDownloadTableModel extends ListModelTableModel<FileDownload, Fi
 	public enum Columns {
 		SOURCES, SIZE, NOW, AVAILABILITY, SPEED, STATE, RATIO, WARNING, FILENAME;
 
-		private Columns() {
+		Columns() {
 		}
 	}
 

@@ -4,6 +4,6 @@
 package ch.scaille.mldonkey.protocol;
 
 public interface IMessage {
-	public short opCode();
+	short opCode();
 
 }

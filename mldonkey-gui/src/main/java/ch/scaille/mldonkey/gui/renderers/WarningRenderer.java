@@ -15,10 +15,10 @@ import ch.scaille.gui.swing.SwingExt;
 import ch.scaille.mldonkey.model.WarningLevel;
 
 public class WarningRenderer extends JLabel implements TableCellRenderer {
-	private static ImageIcon warnIcon;
-	private static ImageIcon tickIcon;
-	private static ImageIcon forbiddenIcon;
-	private static ImageIcon questionMarkIcon;
+	private static final ImageIcon warnIcon;
+	private static final ImageIcon tickIcon;
+	private static final ImageIcon forbiddenIcon;
+	private static final ImageIcon questionMarkIcon;
 
 	@Override
 	public Component getTableCellRendererComponent(final JTable table, final Object value, final boolean isSelected,

@@ -6,9 +6,9 @@ package ch.scaille.mldonkey.model;
 import java.util.Collection;
 
 public interface IWarnedData {
-	public Collection<String> getWarnData();
+	Collection<String> getWarnData();
 
-	public WarningLevel getWarnings();
+	WarningLevel getWarnings();
 
-	public void setWarnings(WarningLevel var1);
+	void setWarnings(WarningLevel var1);
 }

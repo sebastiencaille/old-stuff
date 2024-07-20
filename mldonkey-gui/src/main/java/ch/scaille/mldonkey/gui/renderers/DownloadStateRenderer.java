@@ -23,7 +23,7 @@ public class DownloadStateRenderer extends DefaultTableCellRenderer {
 			this.setBackground(table.getBackground());
 		}
 		switch (value) {
-		case FileDownload download when download.getChunks().length() == 0 -> this.setText("Zero len");
+		case FileDownload download when download.getChunks().isEmpty() -> this.setText("Zero len");
 		case FileDownload download when download.getState() == FileState.QUEUED -> this.setText("Queued");
 		case FileDownload download when !download.isHasFirstByte() && download.getDownloadedSize() > 0 -> {
 			this.setText("Missing start");

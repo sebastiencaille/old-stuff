@@ -58,7 +58,7 @@ public class MlList implements IMlType {
 		final var expectedType = this.types[this.data.size() % this.types.length];
 		if (!expectedType.equals(type.getClass())) {
 			throw new IllegalArgumentException(
-					"Expected " + expectedType.getClass().getName() + ", but was " + type.getClass().getName());
+					"Expected " + expectedType.getName() + ", but was " + type.getClass().getName());
 		}
 		this.data.add(type);
 	}

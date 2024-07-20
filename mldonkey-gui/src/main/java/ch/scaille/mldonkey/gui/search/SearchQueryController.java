@@ -50,7 +50,7 @@ public class SearchQueryController extends GuiController {
 		return e -> {
 			final var value = searchModel.lastSelectedResult.getValue();
 			if (value != null) {
-				searchModel.getSearchTextProperty().setValue(this, value.getFileNames().get(0));
+				searchModel.getSearchTextProperty().setValue(this, value.getFileNames().getFirst());
 			}
 		};
 	}

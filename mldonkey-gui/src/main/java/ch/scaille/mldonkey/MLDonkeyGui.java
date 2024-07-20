@@ -101,21 +101,20 @@ public class MLDonkeyGui {
 	private final List<Process> previews = new ArrayList<>();
 	private final BlackListManager blackListManager;
 	private final File incoming;
-	private final Crypto crypto;
-	private Consumer<String> console;
+    private Consumer<String> console;
 	private JFrame mainFrame;
 	private int lastQueryId = 0;
 
 	public MLDonkeyGui() {
 		final var home = new File(System.getProperty("user.home"));
 		final var mldonkeyDir = new File(home, ".mldonkey");
+		final var crypto = new Crypto(mldonkeyDir);
 		mldonkeyDir.mkdirs();
 		this.temp = new File(home, ".mldonkey/temp");
 		this.incoming = new File(home, ".mldonkey/incoming/files");
-		this.crypto = new Crypto(mldonkeyDir);
 		this.warningManager = new WarnListManager(new File(mldonkeyDir, "warnlist.txt"));
 		this.warningManager.load();
-		this.blackListManager = new BlackListManager(new File(mldonkeyDir, "blacklist.txt"), this.crypto, this.timer);
+		this.blackListManager = new BlackListManager(new File(mldonkeyDir, "blacklist.txt"), crypto, this.timer);
 		this.blackListManager.load();
 		this.connection = new CoreConnection(this);
 		this.downloadsRefresh.start();
@@ -334,7 +333,7 @@ public class MLDonkeyGui {
 		if (download.getIdentifiers().isEmpty()) {
 			return Optional.empty();
 		}
-		return Optional.of(new File(this.temp, download.getIdentifiers().get(0).replace(':', '_')));
+		return Optional.of(new File(this.temp, download.getIdentifiers().getFirst().replace(':', '_')));
 	}
 
 	public void killPreview() {
@@ -391,8 +390,8 @@ public class MLDonkeyGui {
 	private void refreshDownloads() {
 		for (final var download : this.downloads) {
 			var file = this.getTempFile(download);
-			if (download.getChunks().length() == 0 || download.getChunks().charAt(0) == '0' || download.isHasFirstByte()
-					|| !file.map(File::exists).isEmpty()) {
+			if (download.getChunks().isEmpty() || download.getChunks().charAt(0) == '0' || download.isHasFirstByte()
+					|| file.filter(File::exists).isEmpty()) {
 				continue;
 			}
 
@@ -414,7 +413,7 @@ public class MLDonkeyGui {
 	}
 
 	public void refreshDownload(final int downloadId) {
-		this.downloadsRefresh.force(Integer.valueOf(downloadId));
+		this.downloadsRefresh.force(downloadId);
 	}
 
 	public void download(final FileQueryResult result) {
@@ -466,7 +465,7 @@ public class MLDonkeyGui {
 			this.queryResults.editValue(queryResult, this::checkResult);
 		}
 		for (final var download : this.downloads) {
-			if (download.getChunks().length() == 0
+			if (download.getChunks().isEmpty()
 					|| !(this.mustMarkAsBlackListed(download) ^ download.getWarnings() == WarningLevel.BLACK_LISTED)) {
 				continue;
 			}
@@ -516,7 +515,7 @@ public class MLDonkeyGui {
 		} catch (final IOException e) {
 			LOGGER.log(e);
 		}
-		this.sharedFileRefresh.force(Integer.valueOf(file.getId()));
+		this.sharedFileRefresh.force(file.getId());
 	}
 
 	public void undoBlackList() {
@@ -567,7 +566,7 @@ public class MLDonkeyGui {
 		}
 	}
 
-	private class StreamReader extends Thread {
+	private static class StreamReader extends Thread {
 		private final Supplier<InputStream> stream;
 		private final boolean show;
 

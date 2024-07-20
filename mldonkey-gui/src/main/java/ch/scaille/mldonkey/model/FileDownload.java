@@ -230,12 +230,12 @@ public class FileDownload implements Comparable<FileDownload>, IWarnedData, IBla
 		if (hasValue == null) {
 			return 0.0f;
 		}
-		for (var i = 0; i < hasValue.length; ++i) {
-			if (!hasValue[i]) {
-				continue;
-			}
-			result = (float) (result + 1.0);
-		}
+        for (boolean b : hasValue) {
+            if (!b) {
+                continue;
+            }
+            result = (float) (result + 1.0);
+        }
 		return result / hasValue.length;
 	}
 

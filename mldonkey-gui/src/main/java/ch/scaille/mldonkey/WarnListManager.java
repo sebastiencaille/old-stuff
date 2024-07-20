@@ -30,7 +30,7 @@ public class WarnListManager {
 					continue;
 				}
 				if (word.length() == 1) {
-					this.singleChars.add(Character.valueOf(word.charAt(0)));
+					this.singleChars.add(word.charAt(0));
 				} else {
 					this.keywords.add(word);
 				}
@@ -58,7 +58,7 @@ public class WarnListManager {
 			last = akeyword;
 		}
 		for (final var c : toCheck.toCharArray()) {
-			if (this.singleChars.contains(Character.valueOf(c))) {
+			if (this.singleChars.contains(c)) {
 				return true;
 			}
 		}

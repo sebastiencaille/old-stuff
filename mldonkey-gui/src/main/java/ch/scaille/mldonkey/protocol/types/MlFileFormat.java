@@ -61,7 +61,7 @@ public class MlFileFormat extends AbstractMlTypeContainer implements IMlType {
 	public enum Format {
 		UNKNOWN, GENERIC, AVI, MP3, OGG;
 
-		private Format() {
+		Format() {
 		}
 	}
 

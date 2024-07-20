@@ -38,12 +38,12 @@ public class MlFloat implements IMlType {
 	public void set(final float value) {
 		final var intPart = (int) value;
 		final var floatPart = (int) ((value - intPart) * 100.0f);
-		this.value = Integer.toString(intPart) + "." + Integer.toString(floatPart);
+		this.value = intPart + "." + floatPart;
 	}
 
 	public float value() {
 		final var intPart = Integer.parseInt(this.value.substring(0, this.value.indexOf(46)));
-		final var floatPart = Integer.parseInt(this.value.substring(this.value.indexOf(46) + 1, this.value.length()));
+		final var floatPart = Integer.parseInt(this.value.substring(this.value.indexOf(46) + 1));
 		return intPart + floatPart / 100.0f;
 	}
 

@@ -38,7 +38,7 @@ public class SearchResultComponentFactory {
 	/**
 	 * One search result
 	 */
-	static class SearchResult {
+	public static class SearchResult {
 		IBindingController selectedResultsController;
 		IBindingController lastSelectedResult;
 		FileQuery fileQuery;
@@ -50,8 +50,6 @@ public class SearchResultComponentFactory {
 
 		/**
 		 * Becomes the visible search view
-		 * 
-		 * @param searchResult
 		 */
 		public void attach() {
 			lastSelectedResult.getVeto().attach();
@@ -62,8 +60,6 @@ public class SearchResultComponentFactory {
 
 		/**
 		 * Becomes the hidden search view
-		 * 
-		 * @param searchResult
 		 */
 		public void detach() {
 			lastSelectedResult.getVeto().detach();

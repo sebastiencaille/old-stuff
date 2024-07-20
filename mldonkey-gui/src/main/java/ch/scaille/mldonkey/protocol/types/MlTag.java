@@ -59,8 +59,7 @@ public class MlTag extends AbstractMlTypeContainer implements IMlType {
 
 	public int getIntTagValue() {
 		return switch (this.getType()) {
-		case UINT32 -> this.int32Value.value();
-		case INT32 -> this.int32Value.value();
+		case UINT32, INT32 -> this.int32Value.value();
 		case INT16 -> this.int16Value.value();
 		case INT8 -> this.int8Value.value() & 255;
 		default -> {
@@ -71,7 +70,7 @@ public class MlTag extends AbstractMlTypeContainer implements IMlType {
 	}
 
 	private enum Type {
-		UINT32, INT32, STRING, IP, INT16, INT8, PAIR32;
+		UINT32, INT32, STRING, IP, INT16, INT8, PAIR32
 	}
 
 }

@@ -6,11 +6,11 @@ package ch.scaille.mldonkey.model;
 import java.util.Collection;
 
 public interface IBlackListData {
-	public Collection<String> getBlackListData();
+	Collection<String> getBlackListData();
 
-	public long getBlackListSize();
+	long getBlackListSize();
 
-	public WarningLevel getWarnings();
+	WarningLevel getWarnings();
 
-	public void setWarnings(WarningLevel var1);
+	void setWarnings(WarningLevel var1);
 }

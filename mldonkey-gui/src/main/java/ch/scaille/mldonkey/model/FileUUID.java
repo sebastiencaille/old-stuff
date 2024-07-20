@@ -16,11 +16,10 @@ public class FileUUID implements Comparable<FileUUID> {
 
 	@Override
 	public boolean equals(final Object obj) {
-		if (!(obj instanceof FileUUID)) {
+		if (!(obj instanceof FileUUID o)) {
 			return false;
 		}
-		final var o = (FileUUID) obj;
-		return this.size == o.size && Arrays.equals(this.md4, o.md4);
+        return this.size == o.size && Arrays.equals(this.md4, o.md4);
 	}
 
 	@Override

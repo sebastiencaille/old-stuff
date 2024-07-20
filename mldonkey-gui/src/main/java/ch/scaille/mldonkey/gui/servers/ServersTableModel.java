@@ -34,7 +34,7 @@ public class ServersTableModel extends ListModelTableModel<Server, ServersTableM
 	public enum Columns {
 		NAME, GEO, STATE, SOFTWARE, FILES, USERS;
 
-		private Columns() {
+		Columns() {
 		}
 	}
 

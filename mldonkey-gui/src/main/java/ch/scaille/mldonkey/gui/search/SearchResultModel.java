@@ -21,7 +21,7 @@ public class SearchResultModel extends ListModelTableModel<FileQueryResult, Sear
 		case TYPE -> {
 			final String name = object.getFileNames().getFirst();
 			final int lastDotIndex = name.lastIndexOf(46) + 1;
-			if (lastDotIndex < 0 || name.length() - lastDotIndex > 5) {
+			if (lastDotIndex < 1 || name.length() - lastDotIndex > 5) {
 				yield "";
 			}
 			yield name.substring(lastDotIndex);

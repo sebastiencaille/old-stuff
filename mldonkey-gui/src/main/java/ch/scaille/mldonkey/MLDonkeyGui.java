@@ -459,14 +459,14 @@ public class MLDonkeyGui {
 
 	public void recheckData() {
 		for (final var queryResult : this.queryResults) {
-			if (!(this.mustMarkAsBlackListed(queryResult) ^ queryResult.getWarnings() == WarningLevel.BLACK_LISTED)) {
+			if (this.mustMarkAsBlackListed(queryResult) == (queryResult.getWarnings() == WarningLevel.BLACK_LISTED)) {
 				continue;
 			}
 			this.queryResults.editValue(queryResult, this::checkResult);
 		}
 		for (final var download : this.downloads) {
 			if (download.getChunks().isEmpty()
-					|| !(this.mustMarkAsBlackListed(download) ^ download.getWarnings() == WarningLevel.BLACK_LISTED)) {
+					|| this.mustMarkAsBlackListed(download) == (download.getWarnings() == WarningLevel.BLACK_LISTED)) {
 				continue;
 			}
 			this.downloads.editValue(download, this::checkDownload);

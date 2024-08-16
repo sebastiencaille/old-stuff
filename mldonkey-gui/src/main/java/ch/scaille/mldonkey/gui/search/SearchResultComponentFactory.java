@@ -46,7 +46,7 @@ public class SearchResultComponentFactory {
 		ListModel<FileQueryResult> filtered;
 
 		// For close
-		List<IBindingController> bindings = new ArrayList<>();
+		final List<IBindingController> bindings = new ArrayList<>();
 
 		/**
 		 * Becomes the visible search view

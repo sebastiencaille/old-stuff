@@ -142,14 +142,11 @@ public class TailToMpvRunner extends AbstractPreview {
 		try (var raf2 = new RandomAccessFile(file, "r")) {
 			raf2.seek(pos);
 			final var buffer2332 = new byte[5242880];
-			do {
-				int len;
-				if ((len = raf2.read(buffer2332)) < 0) {
-					return;
-				}
-				TailToMpvRunner.this.process.injectIntoProcess(buffer2332, 0, len);
-				break;
-			} while (true);
+			int len;
+			if ((len = raf2.read(buffer2332)) < 0) {
+				return;
+			}
+			TailToMpvRunner.this.process.injectIntoProcess(buffer2332, 0, len);
 		} catch (final IOException raf2) {
 			// ignore
 		} catch (final Exception e) {

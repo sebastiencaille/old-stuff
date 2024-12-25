@@ -7,6 +7,7 @@ import java.util.Arrays;
 import ch.scaille.gui.mvc.GuiModel;
 import ch.scaille.gui.mvc.IObjectGuiModel;
 import ch.scaille.javabeans.IComponentBinding;
+import ch.scaille.javabeans.IComponentChangeSource;
 import ch.scaille.javabeans.IComponentLink;
 import ch.scaille.javabeans.properties.AbstractProperty;
 import ch.scaille.javabeans.properties.Configuration;
@@ -299,7 +300,7 @@ public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<ch
 			}
             
             @Override
-            public void setComponentValue(final AbstractProperty source, final ch.scaille.mldonkey.model.FileDownload value) {
+            public void setComponentValue(final IComponentChangeSource source, final ch.scaille.mldonkey.model.FileDownload value) {
                 if (value != null) {
                     setCurrentObject(value);
                     load();

@@ -16,7 +16,7 @@ import javax.swing.JComponent;
 import ch.scaille.gui.mvc.ComponentBindingAdapter;
 import ch.scaille.gui.mvc.factories.ComponentBindings;
 import ch.scaille.javabeans.IComponentBinding;
-import ch.scaille.javabeans.properties.AbstractProperty;
+import ch.scaille.javabeans.IComponentChangeSource;
 
 public class ChunksBar extends JComponent {
 	private String value = "0";
@@ -49,7 +49,7 @@ public class ChunksBar extends JComponent {
 		return new ComponentBindingAdapter<>() {
 
 			@Override
-			public void setComponentValue(final AbstractProperty source, final Long value) {
+			public void setComponentValue(final IComponentChangeSource source, final Long value) {
 				ChunksBar.this.size = value;
 				ChunksBar.this.repaint();
 			}

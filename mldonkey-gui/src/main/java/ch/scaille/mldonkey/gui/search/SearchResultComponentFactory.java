@@ -52,9 +52,9 @@ public class SearchResultComponentFactory {
 		 * Becomes the visible search view
 		 */
 		public void attach() {
-			lastSelectedResult.getVeto().attach();
+			lastSelectedResult.getVetoer().attach();
 			lastSelectedResult.forceViewUpdate();
-			selectedResultsController.getVeto().attach();
+			selectedResultsController.getVetoer().attach();
 			selectedResultsController.forceViewUpdate();
 		}
 
@@ -62,8 +62,8 @@ public class SearchResultComponentFactory {
 		 * Becomes the hidden search view
 		 */
 		public void detach() {
-			lastSelectedResult.getVeto().detach();
-			selectedResultsController.getVeto().detach();
+			lastSelectedResult.getVetoer().detach();
+			selectedResultsController.getVetoer().detach();
 		}
 		
 		public void close() {

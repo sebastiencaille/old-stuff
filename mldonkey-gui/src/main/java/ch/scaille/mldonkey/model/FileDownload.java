@@ -222,9 +222,8 @@ public class FileDownload implements Comparable<FileDownload>, IWarnedData, IBla
 				System.arraycopy(old, 0, hasValue, 0, old.length);
 			}
 			for (var i = 0; i < availFromClient.getValue().length(); ++i) {
-				final boolean[] arrbl = hasValue;
-				final int n = i;
-				arrbl[n] |= availFromClient.getValue().charAt(i) == '1';
+                final int n = i;
+				hasValue[n] |= availFromClient.getValue().charAt(i) == '1';
 			}
 		}
 		if (hasValue == null) {

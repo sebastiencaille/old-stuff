@@ -305,7 +305,7 @@ public class MLDonkeyGui {
 			if (offset >= 0) {
 				PreviewFactory.createPreview(download, tempFile).preview(this.mainFrame, offset);
 			} else {
-				PreviewFactory.create(download, tempFile).preview(this.mainFrame, -1);
+				PreviewFactory.create(download, tempFile).orElseThrow().preview(this.mainFrame, -1);
 			}
 		});
 	}

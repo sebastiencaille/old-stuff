@@ -38,8 +38,7 @@ public class BlackListManager {
 	}
 
 	protected void saveValidatedBlacklist() {
-		final var all = BlackListManager.this.allEntries;
-		synchronized (all) {
+        synchronized (this.allEntries) {
 			if (!dirty) {
 				return;
 			}
@@ -101,20 +100,18 @@ public class BlackListManager {
 	}
 
 	public boolean match(final Collection<String> links, final long size) {
-		boolean found = false;
 		for (final var link : links) {
 			final var key = this.key(link, size);
 			final var hashed = crypto.getHash(key);
-			if (!this.allEntries.containsKey(hashed)) {
-				continue;
+			if (this.allEntries.containsKey(hashed)) {
+				if (links.size() > 1) {
+					// cache all links
+					addLinks(links, size);
+				}
+				return true;
 			}
-			found = true;
-			break;
 		}
-		if (found && links.size() > 1) {
-			addLinks(links, size);
-		}
-		return found;
+		return false;
 	}
 
 	public void addLinks(final Collection<String> fileLinks, final long size) {
@@ -130,12 +127,7 @@ public class BlackListManager {
 	}
 
 	private String key(final String link, final long size) {
-		try {
-			return link.toLowerCase() + size;
-		} catch (final Exception e) {
-			LOGGER.log(e);
-			return null;
-		}
+		return link.toLowerCase() + size;
 	}
 
 	public void clearUnsaved() {

@@ -6,17 +6,18 @@ package ch.scaille.mldonkey.preview;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Optional;
 
 import ch.scaille.mldonkey.model.FileDownload;
 import ch.scaille.util.helpers.JavaExt;
 
 public class PreviewFactory {
 
-	public static AbstractPreview create(final FileDownload download, final File tmp) {
+	public static Optional<AbstractPreview> create(final FileDownload download, final File tmp) {
 		FileType typeByContent;
 		String contentIdentification;
 		if (download.getChunks().isEmpty()) {
-			return null;
+			return Optional.empty();
 		}
 		final boolean hasStart = download.getChunks().charAt(0) != '0';
 		try {
@@ -28,17 +29,17 @@ public class PreviewFactory {
 				contentIdentification = null;
 			}
 		} catch (final IOException e) {
-			return null;
+			return Optional.empty();
 		}
 		if (typeByContent == null) {
-			return new TailToMpvRunner(tmp, download, contentIdentification, download.getName());
+			return Optional.of(new TailToMpvRunner(tmp, download, contentIdentification, download.getName()));
 		}
-		return switch (typeByContent) {
-		case DIVX -> new DivFixRunner(tmp, download.getName());
-		case RAR -> new RarRunner(tmp, download.getName());
-		case ZIP -> new ZipRunner(tmp, download.getName());
-		default -> new MPlayerRunner(tmp, download.getName());
-		};
+		return Optional.of(switch (typeByContent) {
+			case DIVX -> new DivFixRunner(tmp, download.getName());
+			case RAR -> new RarRunner(tmp, download.getName());
+			case ZIP -> new ZipRunner(tmp, download.getName());
+			default -> new MPlayerRunner(tmp, download.getName());
+		});
 	}
 
 	private static String getTypeIdentification(final File tmp) throws IOException {

@@ -29,8 +29,7 @@ public class RefreshManager<T> {
 			@Override
 			public void run() {
 				try {
-					final var set = RefreshManager.this.dirty;
-					synchronized (set) {
+                    synchronized (RefreshManager.this.dirty) {
 						RefreshManager.this.dirty.clear();
 					}
 					RefreshManager.this.onRefresh.accept(null);

@@ -301,8 +301,7 @@ public class TailToMpvRunner extends AbstractPreview {
 
 	private void setPos(final long tail) {
 		try {
-			final long val = tail;
-			EventQueue.invokeAndWait(() -> TailToMpvRunner.this.model.getPos().setValue(this, val));
+            EventQueue.invokeAndWait(() -> TailToMpvRunner.this.model.getPos().setValue(this, tail));
 		} catch (final InterruptedException e) {
 			try {
 				SwingUtilities.invokeAndWait(this::kill);

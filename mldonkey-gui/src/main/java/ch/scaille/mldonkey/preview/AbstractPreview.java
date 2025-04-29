@@ -36,7 +36,7 @@ public abstract class AbstractPreview {
 		this.info = info;
 	}
 
-	protected abstract ProcessBuilder createProcessBuilder() throws IOException;
+	protected abstract ProcessBuilder createProcessBuilder();
 
 	protected String getFileName() {
 		return this.tmp.getAbsolutePath();

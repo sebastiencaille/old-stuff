@@ -61,7 +61,7 @@ public class SearchResultPane extends JTabbedPane implements ListDataListener {
 				final var close = new JMenuItem("Close");
 				popupMenu.add(close);
 				close.addActionListener(controller.getCloseAction(selectedSearchResult.fileQuery));
-				close.addActionListener(e -> SearchResultPane.this.removeTab());
+				close.addActionListener(_ -> SearchResultPane.this.removeTab());
 				
 				final var asQuery = new JMenuItem("As query");
 				asQuery.addActionListener(controller.getAsQueryAction());

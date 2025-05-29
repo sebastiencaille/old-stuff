@@ -104,7 +104,7 @@ public abstract class AbstractPreview {
 	}
 
 	private ActionListener killAction() {
-		return e -> kill();
+		return _ -> kill();
 	}
 
 }

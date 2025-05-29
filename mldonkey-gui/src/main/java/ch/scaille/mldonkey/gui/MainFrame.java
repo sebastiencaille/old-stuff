@@ -76,7 +76,7 @@ public class MainFrame extends JFrame {
 		final var originalBgColor = tabbedPane.getBackgroundAt(0);
 
 		final var newDownload = sharedFilesPanel.getController().getModel().getNewDownload();
-		newDownload.bind(Converters.booleanConverter(b -> (b != null && b) ? Color.ORANGE : originalBgColor, c -> null))
+		newDownload.bind(Converters.booleanConverter(b -> (b != null && b) ? Color.ORANGE : originalBgColor, _ -> null))
 				.listen(color -> tabbedPane.setBackgroundAt(sharedFilesPos, color));
 
 		this.gui.getDownloads().addListener(IListModelListener.editionStopped(event -> {
@@ -86,7 +86,7 @@ public class MainFrame extends JFrame {
 				newDownload.setValue(this, true);
 			}
 		}));
-		tabbedPane.addChangeListener(e -> {
+		tabbedPane.addChangeListener(_ -> {
 			if (tabbedPane.getSelectedComponent() == sharedFilesPanel) {
 				newDownload.setValue(this, false);
 			}

@@ -36,11 +36,11 @@ public class ServerPanelController extends GuiController {
 	}
 
 	public ActionListener getDisconnectAction() {
-		return e -> gui.disconnectServer(ServerPanelController.this.model.getLastSelectedServer().getValue());
+		return _ -> gui.disconnectServer(ServerPanelController.this.model.getLastSelectedServer().getValue());
 	}
 
 	public ActionListener getConnectMoreAction() {
-		return e -> gui.connectMoreServers();
+		return _ -> gui.connectMoreServers();
 	}
 
 }

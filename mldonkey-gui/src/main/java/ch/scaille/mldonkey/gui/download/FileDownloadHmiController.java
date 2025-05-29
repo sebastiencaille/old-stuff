@@ -38,7 +38,7 @@ public class FileDownloadHmiController extends GuiController {
 	}
 
 	public ActionListener getCancelFileAction() {
-		return e -> {
+		return _ -> {
 			if (getSelectedDownloads().getValue() != null) {
 				getSelectedDownloads().getValue().forEach(this.gui::cancelDownload);
 			}
@@ -46,18 +46,18 @@ public class FileDownloadHmiController extends GuiController {
 	}
 
 	public ActionListener getPreviewFileAction() {
-		return e -> this.model.lastSelectedDownload.optional().ifPresent(v -> this.gui.preview(v, -1));
+		return _ -> this.model.lastSelectedDownload.optional().ifPresent(v -> this.gui.preview(v, -1));
 	}
 
 	public ActionListener getBlackListFileAction() {
-		return e -> this.model.selectedDownloads.getValue().forEach(download -> {
+		return _ -> this.model.selectedDownloads.getValue().forEach(download -> {
 			this.gui.blackList(download);
 			this.gui.cancelDownload(download);
 		});
 	}
 
 	public ActionListener asQueryAction() {
-		return e -> this.model.lastSelectedDownload.optional().ifPresent(v -> this.searchQueryController
+		return _ -> this.model.lastSelectedDownload.optional().ifPresent(v -> this.searchQueryController
 				.getSearchPanelModel().getSearchTextProperty().setValue(this, v.getName()));
 	}
 
@@ -66,6 +66,6 @@ public class FileDownloadHmiController extends GuiController {
 	}
 
 	public ActionListener getViewFileAction() {
-		return e -> this.model.lastSelectedDownload.optional().ifPresent(this.gui::view);
+		return _ -> this.model.lastSelectedDownload.optional().ifPresent(this.gui::view);
 	}
 }

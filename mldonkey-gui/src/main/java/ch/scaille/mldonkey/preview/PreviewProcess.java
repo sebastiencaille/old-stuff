@@ -34,7 +34,7 @@ public class PreviewProcess {
 		new Thread(() -> {
 			try (var stream = currentProcess.getInputStream()) {
 				handleOutput(stream);
-			} catch (final IOException stream) {
+			} catch (final IOException _) {
 				// empty catch block
 			}
 		}).start();
@@ -89,8 +89,8 @@ public class PreviewProcess {
 		while (!this.isTerminated()) {
 			try {
 				Thread.sleep(10);
-			} catch (final InterruptedException e) {
-				Thread.interrupted();
+			} catch (final InterruptedException _) {
+				Thread.currentThread().interrupt();
 				return;
 			}
 		}
@@ -104,8 +104,8 @@ public class PreviewProcess {
 			Thread.sleep(100);
 			this.currentProcess.exitValue();
 			return true;
-		} catch (final Exception exception) {
-			Thread.interrupted();
+		} catch (Exception _) {
+			Thread.currentThread().interrupt();
 			return false;
 		}
 	}

@@ -24,19 +24,19 @@ public class SharedFilePanelController extends GuiController {
 	}
 
 	public ActionListener getCancelFileAction() {
-		return e -> model.getSelectedShares().getValue().forEach(gui::deleteSharedFile);
+		return _ -> model.getSelectedShares().getValue().forEach(gui::deleteSharedFile);
 	}
 
 	public ActionListener getPreviewFileAction() {
-		return e -> gui.preview(model.getLastSelectedShare().getValue());
+		return _ -> gui.preview(model.getLastSelectedShare().getValue());
 	}
 
 	public ActionListener getKillPreviewAction() {
-		return e -> gui.killPreview();
+		return _ -> gui.killPreview();
 	}
 
 	public ActionListener getBlackListFileAction() {
-		return e -> model.getSelectedShares().getValue().forEach(file -> {
+		return _ -> model.getSelectedShares().getValue().forEach(file -> {
 			gui.blackList(file);
 			gui.deleteSharedFile(file);
 		});

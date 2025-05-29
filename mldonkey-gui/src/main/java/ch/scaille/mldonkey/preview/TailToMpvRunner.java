@@ -119,9 +119,9 @@ public class TailToMpvRunner extends AbstractPreview {
 					break;
 				}
 				Thread.sleep(100);
-			} catch (final InterruptedException e) {
+			} catch (final InterruptedException _) {
 				// empty catch block
-				Thread.interrupted();
+				Thread.currentThread().interrupt();
 				break;
 			}
 		}
@@ -147,7 +147,7 @@ public class TailToMpvRunner extends AbstractPreview {
 				return;
 			}
 			TailToMpvRunner.this.process.injectIntoProcess(buffer2332, 0, len);
-		} catch (final IOException raf2) {
+		} catch (final IOException _) {
 			// ignore
 		} catch (final Exception e) {
 			LOGGER.log(e);
@@ -182,7 +182,7 @@ public class TailToMpvRunner extends AbstractPreview {
 	}
 
 	private ActionListener smartRun(final JButton button, final float step) {
-		return e -> {
+		return _ -> {
 
 			if (step == -2) {
 				if (previewThread != null) {
@@ -231,7 +231,7 @@ public class TailToMpvRunner extends AbstractPreview {
 	}
 
 	private ActionListener next() {
-		return e -> {
+		return _ -> {
 			if (TailToMpvRunner.this.tailThread != null) {
 				TailToMpvRunner.this.tailThread.interrupt();
 			}
@@ -302,10 +302,11 @@ public class TailToMpvRunner extends AbstractPreview {
 	private void setPos(final long tail) {
 		try {
             EventQueue.invokeAndWait(() -> TailToMpvRunner.this.model.getPos().setValue(this, tail));
-		} catch (final InterruptedException e) {
+		} catch (final InterruptedException _) {
 			try {
 				SwingUtilities.invokeAndWait(this::kill);
 			} catch (InvocationTargetException | InterruptedException e1) {
+				Thread.currentThread().interrupt();
 				LOGGER.log(e1);
 			}
 		} catch (final Exception e) {

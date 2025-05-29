@@ -92,7 +92,7 @@ public class CoreConnection {
 			final var sizeBuffer = ByteBuffer.allocate(4);
 			this.readBuffer("size", input, sizeBuffer);
 			size = sizeBuffer.getInt();
-		} catch (final BufferUnderflowException e) {
+		} catch (final BufferUnderflowException _) {
 			throw new IOException("Disconnection detected");
 		}
 		if (size == 0) {

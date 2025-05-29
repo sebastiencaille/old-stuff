@@ -96,7 +96,7 @@ public class MLDonkeyGui {
 			this::refreshDownloads);
 	private final Set<File> shared = new HashSet<>();
 	private final RefreshManager<Integer> sharedFileRefresh = new RefreshManager<>(this.timer, 10000, 1000,
-			id -> this.refreshSharedFiles());
+			_ -> this.refreshSharedFiles());
 	private final File temp;
 	private final List<Process> previews = new ArrayList<>();
 	private final BlackListManager blackListManager;
@@ -196,8 +196,8 @@ public class MLDonkeyGui {
 			}
 			try {
 				Thread.sleep(1000);
-			} catch (final InterruptedException e) {
-				Thread.interrupted();
+			} catch (final InterruptedException _) {
+				Thread.currentThread().interrupt();
 				LOGGER.log("Interrupted");
 				return;
 			}
@@ -577,13 +577,14 @@ public class MLDonkeyGui {
 
 		@Override
 		public void run() {
-			try (var in = this.stream.get()) {
+			try (var in = this.stream.get();
+					var out = OutputStream.nullOutputStream()) {
 				if (show) {
 					Logs.of(MLDonkeyGui.class).info(new BufferedReader(new InputStreamReader(in)).lines().collect(Collectors.joining("\n")));
 				} else {
-					in.transferTo(OutputStream.nullOutputStream());
+					in.transferTo(out);
 				}
-			} catch (final IOException e) {
+			} catch (final IOException _) {
 				// ignore
 			}
 		}

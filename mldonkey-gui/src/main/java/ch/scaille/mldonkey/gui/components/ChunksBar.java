@@ -39,7 +39,7 @@ public class ChunksBar extends JComponent {
 	}
 
 	public IComponentBinding<String> valueBinding() {
-		return ComponentBindings.listen((p, v) -> {
+		return ComponentBindings.listen((_, v) -> {
 			this.value = v;
 			this.repaint();
 		});

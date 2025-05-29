@@ -25,7 +25,7 @@ public class SearchQueryController extends GuiController {
 	}
 
 	public ActionListener copyAndGetPerformSearchAction() {
-		return e -> {
+		return _ -> {
 			final var query = SearchQueryController.this.gui.createFileQuery();
 			searchModel.setCurrentObject(query);
 			searchModel.save();
@@ -34,7 +34,7 @@ public class SearchQueryController extends GuiController {
 	}
 
 	public ActionListener getPerformSearchAction() {
-		return e -> {
+		return _ -> {
 			final var query = SearchQueryController.this.gui.createFileQuery();
 			searchModel.setCurrentObject(query);
 			searchModel.save();
@@ -43,11 +43,11 @@ public class SearchQueryController extends GuiController {
 	}
 
 	public ActionListener getSearchMoreAction() {
-		return e -> SearchQueryController.this.gui.searchMore();
+		return _ -> SearchQueryController.this.gui.searchMore();
 	}
 
 	public ActionListener asQueryAction() {
-		return e -> {
+		return _ -> {
 			final var value = searchModel.lastSelectedResult.getValue();
 			if (value != null) {
 				searchModel.getSearchTextProperty().setValue(this, value.getFileNames().getFirst());
@@ -56,7 +56,7 @@ public class SearchQueryController extends GuiController {
 	}
 
 	public ActionListener downloadSelectedAction() {
-		return e -> searchModel.getSelectedResults().getValue().forEach(SearchQueryController.this.gui::download);
+		return _ -> searchModel.getSelectedResults().getValue().forEach(SearchQueryController.this.gui::download);
 	}
 
 	public void downloadSelected() {
@@ -64,18 +64,18 @@ public class SearchQueryController extends GuiController {
 	}
 
 	public ActionListener getBlackListSelectedAction() {
-		return e -> {
+		return _ -> {
 			searchModel.getSelectedResults().getValue().forEach(SearchQueryController.this.gui::blackList);
 			SearchQueryController.this.gui.recheckData();
 		};
 	}
 
 	public ActionListener getCloseAction(final FileQuery selected) {
-		return e -> SearchQueryController.this.gui.closeQuery(selected);
+		return _ -> SearchQueryController.this.gui.closeQuery(selected);
 	}
 
 	public ActionListener getAsQueryAction() {
-		return e -> {
+		return _ -> {
 			var content = searchModel.getSelectedSearch().getValue().fileQuery.getSearchText();
 			if (content.startsWith("CONTAINS[")) {
 				content = content.substring(9, content.length() - 1);

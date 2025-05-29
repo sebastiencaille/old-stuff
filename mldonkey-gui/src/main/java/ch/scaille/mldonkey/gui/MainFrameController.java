@@ -20,19 +20,19 @@ public class MainFrameController {
 	}
 
 	public ActionListener getKillPreviewAction() {
-		return e -> MainFrameController.this.gui.killPreview();
+		return _ -> MainFrameController.this.gui.killPreview();
 	}
 
 	public ActionListener getSaveBlackListAction() {
-		return e -> MainFrameController.this.gui.saveBlackList();
+		return _ -> MainFrameController.this.gui.saveBlackList();
 	}
 
 	public ActionListener getUndoBlackListAction() {
-		return e -> MainFrameController.this.gui.undoBlackList();
+		return _ -> MainFrameController.this.gui.undoBlackList();
 	}
 
 	public ActionListener getKillCoreAction() {
-		return e -> {
+		return _ -> {
 			final int killCore = JOptionPane.showConfirmDialog(MainFrameController.this.mainFrame,
 					"Are you sure that you want to kill the core ?", "Kill Core", 0);
 			if (killCore == 0) {
@@ -42,7 +42,7 @@ public class MainFrameController {
 	}
 
 	public ActionListener getTestAction() {
-		return e -> MainFrameController.this.gui.test();
+		return _ -> MainFrameController.this.gui.test();
 	}
 
 }

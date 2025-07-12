@@ -7,10 +7,11 @@ import java.util.Arrays;
 import ch.scaille.gui.mvc.GuiModel;
 import ch.scaille.gui.mvc.IObjectGuiModel;
 import ch.scaille.javabeans.IComponentBinding;
-import ch.scaille.javabeans.IComponentChangeSource;
 import ch.scaille.javabeans.IComponentLink;
+import ch.scaille.javabeans.IComponentChangeSource;
 import ch.scaille.javabeans.properties.AbstractProperty;
 import ch.scaille.javabeans.properties.Configuration;
+
 import ch.scaille.javabeans.persisters.IPersisterFactory.ObjectHolder;
 import ch.scaille.javabeans.persisters.Persisters;
 import ch.scaille.mldonkey.model.FileDownload;
@@ -23,7 +24,7 @@ import ch.scaille.javabeans.properties.ListProperty;
 import ch.scaille.javabeans.properties.IntProperty;
 import ch.scaille.javabeans.properties.MapProperty;
 
-@Generated(value = "ch.scaille.gui.mvc.GuiModelGenerator", date = "2023/12/10 21:22", comments = "-sp ch.scaille.mldonkey.model -tp ch.scaille.mldonkey.gui.model -s /home/scaille/src/github/old-stuff/mldonkey-gui/target/classes -t /home/scaille/src/github/old-stuff/mldonkey-gui/src/main/java")
+@Generated(value = "ch.scaille.gui.mvc.GuiModelGenerator", date = "2025/07/10 21:43", comments = "-sp ch.scaille.mldonkey.model -tp ch.scaille.mldonkey.gui.model -s /home/scaille/src/github/old-stuff/mldonkey-gui/target/classes -t /home/scaille/src/github/old-stuff/mldonkey-gui/src/main/java")
 public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<ch.scaille.mldonkey.model.FileDownload> {
    
     private final ObjectHolder<ch.scaille.mldonkey.model.FileDownload> currentObjectProvider = new ObjectHolder<>();
@@ -40,11 +41,11 @@ public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<ch
 	
 	public static final String BLACK_LIST_DATA = "BlackListData";
 	
+	public static final String HAS_FIRST_BYTE = "HasFirstByte";
+	
 	public static final String DOWNLOAD_RATE = "DownloadRate";
 	
 	public static final String LAST_SEEN = "LastSeen";
-	
-	public static final String HAS_FIRST_BYTE = "HasFirstByte";
 	
 	public static final String NAME = "Name";
 	
@@ -72,9 +73,9 @@ public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<ch
 	
 	public static final String WARNINGS = "Warnings";
 	
-	public static final String AVAILABILITIES = "Availabilities";
-	
 	public static final String FILE_SIZE = "FileSize";
+	
+	public static final String AVAILABILITIES = "Availabilities";
 	
 	
 
@@ -84,9 +85,9 @@ public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<ch
 	protected final ObjectProperty<java.util.Collection<java.lang.String>> warnDataProperty;
 	protected final BooleanProperty downloadNotifiedProperty;
 	protected final ObjectProperty<java.util.Collection<java.lang.String>> blackListDataProperty;
+	protected final BooleanProperty hasFirstByteProperty;
 	protected final FloatProperty downloadRateProperty;
 	protected final IntProperty lastSeenProperty;
-	protected final BooleanProperty hasFirstByteProperty;
 	protected final ObjectProperty<java.lang.String> nameProperty;
 	protected final LongProperty blackListSizeProperty;
 	protected final SetProperty<java.lang.String> namesProperty;
@@ -100,8 +101,8 @@ public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<ch
 	protected final ObjectProperty<byte[]> md4Property;
 	protected final ListProperty<java.lang.String> identifiersProperty;
 	protected final ObjectProperty<ch.scaille.mldonkey.model.WarningLevel> warningsProperty;
-	protected final MapProperty<ch.scaille.mldonkey.model.Client, java.lang.String> availabilitiesProperty;
 	protected final LongProperty fileSizeProperty;
+	protected final MapProperty<ch.scaille.mldonkey.model.Client, java.lang.String> availabilitiesProperty;
 	
 	
 	protected final AbstractProperty[] allProperties;
@@ -126,15 +127,15 @@ public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<ch
 		blackListDataProperty = new ObjectProperty<java.util.Collection<java.lang.String>>(prefix + BLACK_LIST_DATA, this).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getBlackListData, null)),
 			implicitConverters(FileDownload.class, BLACK_LIST_DATA, java.util.Collection.class));
+		hasFirstByteProperty = new BooleanProperty(prefix + HAS_FIRST_BYTE, this).configureTyped(
+			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::isHasFirstByte, FileDownload::setHasFirstByte)),
+			implicitConverters(FileDownload.class, HAS_FIRST_BYTE, java.lang.Boolean.class));
 		downloadRateProperty = new FloatProperty(prefix + DOWNLOAD_RATE, this).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getDownloadRate, FileDownload::setDownloadRate)),
 			implicitConverters(FileDownload.class, DOWNLOAD_RATE, java.lang.Float.class));
 		lastSeenProperty = new IntProperty(prefix + LAST_SEEN, this).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getLastSeen, FileDownload::setLastSeen)),
 			implicitConverters(FileDownload.class, LAST_SEEN, java.lang.Integer.class));
-		hasFirstByteProperty = new BooleanProperty(prefix + HAS_FIRST_BYTE, this).configureTyped(
-			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::isHasFirstByte, FileDownload::setHasFirstByte)),
-			implicitConverters(FileDownload.class, HAS_FIRST_BYTE, java.lang.Boolean.class));
 		nameProperty = new ObjectProperty<java.lang.String>(prefix + NAME, this).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getName, FileDownload::setName)),
 			implicitConverters(FileDownload.class, NAME, java.lang.String.class));
@@ -174,14 +175,14 @@ public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<ch
 		warningsProperty = new ObjectProperty<ch.scaille.mldonkey.model.WarningLevel>(prefix + WARNINGS, this).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getWarnings, FileDownload::setWarnings)),
 			implicitConverters(FileDownload.class, WARNINGS, ch.scaille.mldonkey.model.WarningLevel.class));
-		availabilitiesProperty = new MapProperty<ch.scaille.mldonkey.model.Client, java.lang.String>(prefix + AVAILABILITIES, this).configureTyped(
-			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getAvailabilities, null)),
-			implicitConverters(FileDownload.class, AVAILABILITIES, java.util.Map.class));
 		fileSizeProperty = new LongProperty(prefix + FILE_SIZE, this).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getFileSize, FileDownload::setFileSize)),
 			implicitConverters(FileDownload.class, FILE_SIZE, java.lang.Long.class));
+		availabilitiesProperty = new MapProperty<ch.scaille.mldonkey.model.Client, java.lang.String>(prefix + AVAILABILITIES, this).configureTyped(
+			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getAvailabilities, null)),
+			implicitConverters(FileDownload.class, AVAILABILITIES, java.util.Map.class));
 		
-		allProperties = new AbstractProperty[]{availabilityProperty, chunksProperty, numberOfSourcesProperty, warnDataProperty, downloadNotifiedProperty, blackListDataProperty, downloadRateProperty, lastSeenProperty, hasFirstByteProperty, nameProperty, blackListSizeProperty, namesProperty, immediateAvailabilityProperty, formatProperty, shareCheckedProperty, downloadedSizeProperty, stateProperty, linksProperty, idProperty, md4Property, identifiersProperty, warningsProperty, availabilitiesProperty, fileSizeProperty};
+		allProperties = new AbstractProperty[]{availabilityProperty, chunksProperty, numberOfSourcesProperty, warnDataProperty, downloadNotifiedProperty, blackListDataProperty, hasFirstByteProperty, downloadRateProperty, lastSeenProperty, nameProperty, blackListSizeProperty, namesProperty, immediateAvailabilityProperty, formatProperty, shareCheckedProperty, downloadedSizeProperty, stateProperty, linksProperty, idProperty, md4Property, identifiersProperty, warningsProperty, fileSizeProperty, availabilitiesProperty};
     }
             
     public FileDownloadGuiModel(ModelConfiguration config) {
@@ -210,14 +211,14 @@ public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<ch
 	public ObjectProperty<java.util.Collection<java.lang.String>> getBlackListDataProperty() {
 	    return blackListDataProperty;
 	}
+	public BooleanProperty getHasFirstByteProperty() {
+	    return hasFirstByteProperty;
+	}
 	public FloatProperty getDownloadRateProperty() {
 	    return downloadRateProperty;
 	}
 	public IntProperty getLastSeenProperty() {
 	    return lastSeenProperty;
-	}
-	public BooleanProperty getHasFirstByteProperty() {
-	    return hasFirstByteProperty;
 	}
 	public ObjectProperty<java.lang.String> getNameProperty() {
 	    return nameProperty;
@@ -258,21 +259,21 @@ public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<ch
 	public ObjectProperty<ch.scaille.mldonkey.model.WarningLevel> getWarningsProperty() {
 	    return warningsProperty;
 	}
-	public MapProperty<ch.scaille.mldonkey.model.Client, java.lang.String> getAvailabilitiesProperty() {
-	    return availabilitiesProperty;
-	}
 	public LongProperty getFileSizeProperty() {
 	    return fileSizeProperty;
+	}
+	public MapProperty<ch.scaille.mldonkey.model.Client, java.lang.String> getAvailabilitiesProperty() {
+	    return availabilitiesProperty;
 	}
 	
 
     @Override
     public void load() {
     	try {
-    		getPropertySupport().transmitAllToComponentOnly();
+    		getPropertySupport().transmitChangesOnlyToComponent();
 			Arrays.stream(allProperties).forEach(p -> p.load(this));
 		} finally {
-			getPropertySupport().enableAllTransmit();
+			getPropertySupport().transmitChangesBothWays();
 		}
     }
 

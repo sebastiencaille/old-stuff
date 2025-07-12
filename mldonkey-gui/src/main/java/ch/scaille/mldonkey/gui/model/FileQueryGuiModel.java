@@ -7,17 +7,18 @@ import java.util.Arrays;
 import ch.scaille.gui.mvc.GuiModel;
 import ch.scaille.gui.mvc.IObjectGuiModel;
 import ch.scaille.javabeans.IComponentBinding;
-import ch.scaille.javabeans.IComponentChangeSource;
 import ch.scaille.javabeans.IComponentLink;
+import ch.scaille.javabeans.IComponentChangeSource;
 import ch.scaille.javabeans.properties.AbstractProperty;
 import ch.scaille.javabeans.properties.Configuration;
+
 import ch.scaille.javabeans.persisters.IPersisterFactory.ObjectHolder;
 import ch.scaille.javabeans.persisters.Persisters;
 import ch.scaille.javabeans.properties.ObjectProperty;
 import ch.scaille.javabeans.properties.IntProperty;
 import ch.scaille.mldonkey.model.FileQuery;
 
-@Generated(value = "ch.scaille.gui.mvc.GuiModelGenerator", date = "2023/12/10 21:22", comments = "-sp ch.scaille.mldonkey.model -tp ch.scaille.mldonkey.gui.model -s /home/scaille/src/github/old-stuff/mldonkey-gui/target/classes -t /home/scaille/src/github/old-stuff/mldonkey-gui/src/main/java")
+@Generated(value = "ch.scaille.gui.mvc.GuiModelGenerator", date = "2025/07/10 21:43", comments = "-sp ch.scaille.mldonkey.model -tp ch.scaille.mldonkey.gui.model -s /home/scaille/src/github/old-stuff/mldonkey-gui/target/classes -t /home/scaille/src/github/old-stuff/mldonkey-gui/src/main/java")
 public class FileQueryGuiModel extends GuiModel implements IObjectGuiModel<ch.scaille.mldonkey.model.FileQuery> {
    
     private final ObjectHolder<ch.scaille.mldonkey.model.FileQuery> currentObjectProvider = new ObjectHolder<>();
@@ -74,10 +75,10 @@ public class FileQueryGuiModel extends GuiModel implements IObjectGuiModel<ch.sc
     @Override
     public void load() {
     	try {
-    		getPropertySupport().transmitAllToComponentOnly();
+    		getPropertySupport().transmitChangesOnlyToComponent();
 			Arrays.stream(allProperties).forEach(p -> p.load(this));
 		} finally {
-			getPropertySupport().enableAllTransmit();
+			getPropertySupport().transmitChangesBothWays();
 		}
     }
 

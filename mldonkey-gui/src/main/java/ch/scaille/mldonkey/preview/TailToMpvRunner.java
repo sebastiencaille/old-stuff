@@ -59,7 +59,7 @@ public class TailToMpvRunner extends AbstractPreview {
 	@Override
 	public void preview(final JFrame win, final long offset) {
 		super.preview(win, offset);
-		this.support.attachAll();
+		this.support.transmitChangesBothWays();
 		if (offset >= 0) {
 			this.stepInMb = MB;
 			this.previewThread = new Thread(() -> {

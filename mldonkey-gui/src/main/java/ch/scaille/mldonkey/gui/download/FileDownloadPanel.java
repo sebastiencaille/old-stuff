@@ -10,7 +10,7 @@ import static ch.scaille.gui.swing.factories.SwingBindings.multipleSelection;
 import static ch.scaille.gui.swing.factories.SwingBindings.selected;
 import static ch.scaille.gui.swing.factories.SwingBindings.selection;
 import static ch.scaille.gui.swing.factories.SwingBindings.values;
-import static ch.scaille.javabeans.Converters.listen;
+import static ch.scaille.javabeans.converters.Converters.listen;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -145,9 +145,10 @@ public class FileDownloadPanel extends JPanel {
 
 		final var countries = new JLabel();
 		detailsPanel.add(countries);
-		this.downloadController.model
-				.getAvailabilitiesProperty().bind(listen(a -> a.keySet().stream()
-						.map(client -> GeoIp.getCounty(client.getGeoIp())).distinct().collect(Collectors.joining(", "))))
+		this.downloadController.model.getAvailabilitiesProperty().bind(listen(a -> a.keySet().stream()
+						.map(client -> GeoIp.getCounty(client.getGeoIp()))
+						.distinct()
+						.collect(Collectors.joining(", "))))
 				.listen(countries::setText);
 		this.add(detailsPanel, BorderLayout.SOUTH);
 		this.downloadController.activate();

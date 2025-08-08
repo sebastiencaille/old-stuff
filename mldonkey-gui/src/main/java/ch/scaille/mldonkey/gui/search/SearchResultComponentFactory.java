@@ -52,22 +52,20 @@ public class SearchResultComponentFactory {
 		 * Becomes the visible search view
 		 */
 		public void attach() {
-			lastSelectedResult.getVetoer().attach();
-			lastSelectedResult.forceViewUpdate();
-			selectedResultsController.getVetoer().attach();
-			selectedResultsController.forceViewUpdate();
+			lastSelectedResult.transmitChangesBothWays();
+			selectedResultsController.transmitChangesBothWays();
 		}
 
 		/**
 		 * Becomes the hidden search view
 		 */
 		public void detach() {
-			lastSelectedResult.getVetoer().detach();
-			selectedResultsController.getVetoer().detach();
+			lastSelectedResult.bufferizeChanges();
+			selectedResultsController.bufferizeChanges();
 		}
 		
 		public void close() {
-			bindings.forEach(IBindingController::unbind);
+			bindings.forEach(IBindingController::bufferizeChanges);
 		}
 	}
 

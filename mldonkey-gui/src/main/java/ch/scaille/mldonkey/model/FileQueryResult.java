@@ -3,6 +3,8 @@
  */
 package ch.scaille.mldonkey.model;
 
+import org.jspecify.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -77,7 +79,7 @@ public class FileQueryResult implements Comparable<FileQueryResult>, IWarnedData
 	}
 
 	@Override
-	public int compareTo(final FileQueryResult o) {
+	public int compareTo(@Nullable final FileQueryResult o) {
 		if (o == null) {
 			return -1;
 		}

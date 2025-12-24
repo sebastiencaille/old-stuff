@@ -14,7 +14,7 @@ public class ConsoleModel extends GuiModel {
 		return this.console;
 	}
 
-	public ConsoleModel(final ModelConfiguration config) {
+	public ConsoleModel(final ModelConfiguration.ModelConfigurationBuilder config) {
 		super(config);
 		this.lineCount = 0;
 	}

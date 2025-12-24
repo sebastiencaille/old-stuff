@@ -14,7 +14,7 @@ public class SharedFilePanelModel extends GuiModel {
 	private final ListProperty<SharedFile> selectedShares;
 	private final BooleanProperty newDownload;
 
-	public SharedFilePanelModel(final ModelConfiguration config) {
+	public SharedFilePanelModel(final ModelConfiguration.ModelConfigurationBuilder config) {
 		super(config);
 		this.lastSelectedShare = new ObjectProperty<>("LastSelectedSharedFile", this.getPropertySupport());
 		this.selectedShares = new ListProperty<>("SelectedSharedFiles", this.getPropertySupport());

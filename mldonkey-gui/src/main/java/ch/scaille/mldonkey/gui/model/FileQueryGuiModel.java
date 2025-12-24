@@ -38,8 +38,8 @@ public class FileQueryGuiModel extends GuiModel implements IObjectGuiModel<ch.sc
 	
 	protected final AbstractProperty[] allProperties;
 	
-    public FileQueryGuiModel(final String prefix, ModelConfiguration config) {
-		super(config.ifNotSet(()->	GuiModel.createErrorProperty(prefix + "FileQuery-Error", config)));
+    public FileQueryGuiModel(final String prefix, ModelConfiguration.ModelConfigurationBuilder config) {
+		super(config.ifNotSet(c ->	GuiModel.createErrorProperty(prefix + "FileQuery-Error", c)));
 		resultsProperty = new ObjectProperty<ch.scaille.gui.model.ListModel<ch.scaille.mldonkey.model.FileQueryResult>>(prefix + RESULTS, this).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileQuery::getResults, null)),
 			implicitConverters(FileQuery.class, RESULTS, ch.scaille.gui.model.ListModel.class));
@@ -53,7 +53,7 @@ public class FileQueryGuiModel extends GuiModel implements IObjectGuiModel<ch.sc
 		allProperties = new AbstractProperty[]{resultsProperty, idProperty, searchTextProperty};
     }
             
-    public FileQueryGuiModel(ModelConfiguration config) {
+    public FileQueryGuiModel(ModelConfiguration.ModelConfigurationBuilder config) {
     	this("", config);
     }
 

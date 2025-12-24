@@ -9,7 +9,7 @@ import ch.scaille.javabeans.properties.LongProperty;
 public class TailRunnerModel extends GuiModel {
 	protected final LongProperty pos = new LongProperty("Pos", this);
 
-	public TailRunnerModel(final ModelConfiguration config) {
+	public TailRunnerModel(final ModelConfiguration.ModelConfigurationBuilder config) {
 		super(config);
 	}
 

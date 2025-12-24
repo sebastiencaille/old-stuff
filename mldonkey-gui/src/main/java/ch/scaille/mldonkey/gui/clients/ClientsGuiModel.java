@@ -13,7 +13,7 @@ public class ClientsGuiModel extends GuiModel {
 	private final ObjectProperty<Client> lastSelectedClient = new ObjectProperty<>("LastSelectedClient", this);
 	private final ClientsTableModel tableModel;
 
-	public ClientsGuiModel(final ModelConfiguration config, final MLDonkeyGui gui) {
+	public ClientsGuiModel(final ModelConfiguration.ModelConfigurationBuilder config, final MLDonkeyGui gui) {
 		super(config);
 		final var filtered = gui.getClients()
 				.child(ListViews.filtered(v -> v.getState() != null && v.getState().isConnected()));

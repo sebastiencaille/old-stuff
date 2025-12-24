@@ -12,7 +12,7 @@ public class ServerPanelModel extends GuiModel {
 	private final BooleanProperty showAll = new BooleanProperty("ShowAll", this);
 	private final ObjectProperty<Server> lastSelectedServer = new ObjectProperty<>("LastSelected", this);
 
-	public ServerPanelModel(final ModelConfiguration config) {
+	public ServerPanelModel(final ModelConfiguration.ModelConfigurationBuilder config) {
 		super(config);
 	}
 

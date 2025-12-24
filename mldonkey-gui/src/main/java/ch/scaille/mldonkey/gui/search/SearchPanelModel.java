@@ -20,7 +20,7 @@ public class SearchPanelModel extends FileQueryGuiModel {
 	final BooleanProperty showNotComplete;
 	final BooleanProperty showScam;
 
-	public SearchPanelModel(final ModelConfiguration config) {
+	public SearchPanelModel(final ModelConfiguration.ModelConfigurationBuilder config) {
 		super(config);
 		this.selectedQuery = new ObjectProperty<>("SelectedQuery", this.getPropertySupport());
 		this.lastSelectedResult = new ObjectProperty<>("LastSelectedResult", this.getPropertySupport());

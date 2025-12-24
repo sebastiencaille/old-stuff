@@ -17,7 +17,9 @@ import ch.scaille.gui.mvc.ComponentBindingAdapter;
 import ch.scaille.gui.mvc.factories.ComponentBindings;
 import ch.scaille.javabeans.IComponentBinding;
 import ch.scaille.javabeans.IComponentChangeSource;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 public class ChunksBar extends JComponent {
 	private String value = "0";
 	private long size = 0;

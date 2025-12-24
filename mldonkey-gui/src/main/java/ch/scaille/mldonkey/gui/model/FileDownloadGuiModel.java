@@ -107,8 +107,8 @@ public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<ch
 	
 	protected final AbstractProperty[] allProperties;
 	
-    public FileDownloadGuiModel(final String prefix, ModelConfiguration config) {
-		super(config.ifNotSet(()->	GuiModel.createErrorProperty(prefix + "FileDownload-Error", config)));
+    public FileDownloadGuiModel(final String prefix, ModelConfiguration.ModelConfigurationBuilder config) {
+		super(config.ifNotSet(c->	GuiModel.createErrorProperty(prefix + "FileDownload-Error", c)));
 		availabilityProperty = new FloatProperty(prefix + AVAILABILITY, this).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getAvailability, null)),
 			implicitConverters(FileDownload.class, AVAILABILITY, java.lang.Float.class));
@@ -185,7 +185,7 @@ public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<ch
 		allProperties = new AbstractProperty[]{availabilityProperty, chunksProperty, numberOfSourcesProperty, warnDataProperty, downloadNotifiedProperty, blackListDataProperty, hasFirstByteProperty, downloadRateProperty, lastSeenProperty, nameProperty, blackListSizeProperty, namesProperty, immediateAvailabilityProperty, formatProperty, shareCheckedProperty, downloadedSizeProperty, stateProperty, linksProperty, idProperty, md4Property, identifiersProperty, warningsProperty, fileSizeProperty, availabilitiesProperty};
     }
             
-    public FileDownloadGuiModel(ModelConfiguration config) {
+    public FileDownloadGuiModel(ModelConfiguration.ModelConfigurationBuilder config) {
     	this("", config);
     }
 

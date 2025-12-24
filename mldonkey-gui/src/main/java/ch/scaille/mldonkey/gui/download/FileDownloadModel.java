@@ -15,7 +15,7 @@ class FileDownloadModel extends FileDownloadGuiModel {
 	final BooleanProperty showOnlyEmptySources;
 	final BooleanProperty showOnlyDownloading;
 
-	public FileDownloadModel(final ModelConfiguration config) {
+	public FileDownloadModel(final ModelConfiguration.ModelConfigurationBuilder config) {
 		super("DownloadPanel", config);
 		this.lastSelectedDownload = new ObjectProperty<>("LastSelectedFileDownload", this.getPropertySupport());
 		this.selectedDownloads = new ListProperty<>("SelectedFileDownloads", this.getPropertySupport());

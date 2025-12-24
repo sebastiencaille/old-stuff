@@ -51,7 +51,7 @@ public class TailToMpvRunner extends AbstractPreview {
 	public TailToMpvRunner(final File tmp, final FileDownload download, final String fileCmdOutput, final String info) {
 		super(tmp, info);
 		this.support = new PropertyChangeSupportController(this).scoped(this);
-		this.model = new TailRunnerModel(GuiModel.with(this.support));
+		this.model = new TailRunnerModel(GuiModel.ModelConfiguration.builder().propertySupport(this.support));
 		this.download = download;
 		this.fileCmdOutput = fileCmdOutput;
 	}

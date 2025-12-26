@@ -60,12 +60,12 @@ public class SearchResultComponentFactory {
 		 * Becomes the hidden search view
 		 */
 		public void detach() {
-			lastSelectedResult.bufferizeChanges();
-			selectedResultsController.bufferizeChanges();
+			lastSelectedResult.stopTransmit();
+			selectedResultsController.stopTransmit();
 		}
 		
 		public void close() {
-			bindings.forEach(IBindingController::bufferizeChanges);
+			bindings.forEach(IBindingController::stopTransmit);
 		}
 	}
 

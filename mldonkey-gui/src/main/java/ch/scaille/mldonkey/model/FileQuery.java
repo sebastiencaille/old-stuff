@@ -47,12 +47,6 @@ public class FileQuery implements Comparable<FileQuery> {
 		this.id = value;
 	}
 
-	public void addEmptyResult(final FileQueryResult result) {
-		if (this.results.find(result) == null) {
-			this.results.insert(result);
-		}
-	}
-
 	@Override
 	public int compareTo(final FileQuery o) {
 		return this.id - o.id;

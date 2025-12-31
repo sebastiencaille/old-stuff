@@ -17,8 +17,10 @@ import ch.scaille.javabeans.persisters.Persisters;
 import ch.scaille.javabeans.properties.ObjectProperty;
 import ch.scaille.javabeans.properties.IntProperty;
 import ch.scaille.mldonkey.model.FileQuery;
+import org.jspecify.annotations.NullMarked;
 
 @Generated(value = "ch.scaille.gui.mvc.GuiModelGenerator", date = "2025/08/01 12:50", comments = "-sp ch.scaille.mldonkey.model -tp ch.scaille.mldonkey.gui.model -s /home/scaille/src/github/old-stuff/mldonkey-gui/target/classes -t /home/scaille/src/github/old-stuff/mldonkey-gui/src/main/java")
+@NullMarked
 public class FileQueryGuiModel extends GuiModel implements IObjectGuiModel<ch.scaille.mldonkey.model.FileQuery> {
    
     private final ObjectHolder<ch.scaille.mldonkey.model.FileQuery> currentObjectProvider = new ObjectHolder<>();

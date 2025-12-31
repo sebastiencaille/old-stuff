@@ -8,7 +8,9 @@ import ch.scaille.javabeans.properties.BooleanProperty;
 import ch.scaille.javabeans.properties.ListProperty;
 import ch.scaille.javabeans.properties.ObjectProperty;
 import ch.scaille.mldonkey.model.SharedFile;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 public class SharedFilePanelModel extends GuiModel {
 	private final ObjectProperty<SharedFile> lastSelectedShare;
 	private final ListProperty<SharedFile> selectedShares;

@@ -35,7 +35,7 @@ public class WarnListManager {
 					this.keywords.add(word);
 				}
 			}
-		} catch (final FileNotFoundException e) {
+		} catch (final FileNotFoundException _) {
 			// ignore
 		} catch (final IOException e) {
 			throw new IllegalStateException("Cannot read file", e);

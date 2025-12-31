@@ -33,7 +33,6 @@ public class WarningRenderer extends JLabel implements TableCellRenderer {
 		case WARN -> warnIcon;
 		case ACK -> tickIcon;
 		case UNK -> questionMarkIcon;
-		default -> null;
 		};
 		setIcon(icon);
 		return this;
@@ -47,7 +46,7 @@ public class WarningRenderer extends JLabel implements TableCellRenderer {
 			forbiddenIcon = SwingExt.iconFromStream(() -> classLoader.getResourceAsStream("forbidden-icon.png"));
 			questionMarkIcon = SwingExt
 					.iconFromStream(() -> classLoader.getResourceAsStream("question-mark-icon.png"));
-		} catch (final IOException e) {
+		} catch (final IOException _) {
 			throw new IllegalStateException("Cannot load icon");
 		}
 	}

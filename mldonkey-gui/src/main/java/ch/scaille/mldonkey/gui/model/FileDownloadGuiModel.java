@@ -23,8 +23,10 @@ import ch.scaille.javabeans.properties.FloatProperty;
 import ch.scaille.javabeans.properties.ListProperty;
 import ch.scaille.javabeans.properties.IntProperty;
 import ch.scaille.javabeans.properties.MapProperty;
+import org.jspecify.annotations.NullMarked;
 
 @Generated(value = "ch.scaille.gui.mvc.GuiModelGenerator", date = "2025/08/01 12:50", comments = "-sp ch.scaille.mldonkey.model -tp ch.scaille.mldonkey.gui.model -s /home/scaille/src/github/old-stuff/mldonkey-gui/target/classes -t /home/scaille/src/github/old-stuff/mldonkey-gui/src/main/java")
+@NullMarked
 public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<ch.scaille.mldonkey.model.FileDownload> {
    
     private final ObjectHolder<ch.scaille.mldonkey.model.FileDownload> currentObjectProvider = new ObjectHolder<>();

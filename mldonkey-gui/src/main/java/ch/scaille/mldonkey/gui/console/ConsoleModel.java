@@ -5,7 +5,9 @@ package ch.scaille.mldonkey.gui.console;
 
 import ch.scaille.gui.mvc.GuiModel;
 import ch.scaille.javabeans.properties.ObjectProperty;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 public class ConsoleModel extends GuiModel {
 	private final ObjectProperty<String> console = new ObjectProperty<>("Console", this, "");
 	private int lineCount;

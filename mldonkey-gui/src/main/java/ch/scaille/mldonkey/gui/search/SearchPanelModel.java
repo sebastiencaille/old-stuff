@@ -10,7 +10,9 @@ import ch.scaille.javabeans.properties.ObjectProperty;
 import ch.scaille.mldonkey.gui.model.FileQueryGuiModel;
 import ch.scaille.mldonkey.gui.search.SearchResultComponentFactory.SearchResult;
 import ch.scaille.mldonkey.model.FileQueryResult;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 public class SearchPanelModel extends FileQueryGuiModel {
 	final ObjectProperty<SearchResultComponentFactory.SearchResult> selectedQuery;
 	final ObjectProperty<FileQueryResult> lastSelectedResult;

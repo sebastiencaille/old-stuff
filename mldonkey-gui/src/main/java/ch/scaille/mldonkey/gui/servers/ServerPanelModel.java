@@ -7,7 +7,9 @@ import ch.scaille.gui.mvc.GuiModel;
 import ch.scaille.javabeans.properties.BooleanProperty;
 import ch.scaille.javabeans.properties.ObjectProperty;
 import ch.scaille.mldonkey.model.Server;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 public class ServerPanelModel extends GuiModel {
 	private final BooleanProperty showAll = new BooleanProperty("ShowAll", this);
 	private final ObjectProperty<Server> lastSelectedServer = new ObjectProperty<>("LastSelected", this);

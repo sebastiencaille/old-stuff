@@ -28,7 +28,7 @@ public class PreviewFactory {
 				typeByContent = null;
 				contentIdentification = null;
 			}
-		} catch (final IOException e) {
+		} catch (final IOException _) {
 			return Optional.empty();
 		}
 		if (typeByContent == null) {

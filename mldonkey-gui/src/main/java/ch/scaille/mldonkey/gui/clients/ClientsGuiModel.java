@@ -8,7 +8,9 @@ import ch.scaille.gui.mvc.GuiModel;
 import ch.scaille.javabeans.properties.ObjectProperty;
 import ch.scaille.mldonkey.MLDonkeyGui;
 import ch.scaille.mldonkey.model.Client;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 public class ClientsGuiModel extends GuiModel {
 	private final ObjectProperty<Client> lastSelectedClient = new ObjectProperty<>("LastSelectedClient", this);
 	private final ClientsTableModel tableModel;

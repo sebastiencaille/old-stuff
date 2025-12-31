@@ -8,7 +8,9 @@ import ch.scaille.javabeans.properties.ListProperty;
 import ch.scaille.javabeans.properties.ObjectProperty;
 import ch.scaille.mldonkey.gui.model.FileDownloadGuiModel;
 import ch.scaille.mldonkey.model.FileDownload;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
 class FileDownloadModel extends FileDownloadGuiModel {
 	final ObjectProperty<FileDownload> lastSelectedDownload;
 	final ListProperty<FileDownload> selectedDownloads;

@@ -10,6 +10,7 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeListener;
+import java.util.Objects;
 
 import javax.swing.JComponent;
 
@@ -18,6 +19,7 @@ import ch.scaille.gui.mvc.factories.ComponentBindings;
 import ch.scaille.javabeans.IComponentBinding;
 import ch.scaille.javabeans.IComponentChangeSource;
 import org.jspecify.annotations.NullMarked;
+import org.jspecify.annotations.Nullable;
 
 @NullMarked
 public class ChunksBar extends JComponent {
@@ -51,8 +53,8 @@ public class ChunksBar extends JComponent {
 		return new ComponentBindingAdapter<>() {
 
 			@Override
-			public void setComponentValue(final IComponentChangeSource source, final Long value) {
-				ChunksBar.this.size = value;
+			public void setComponentValue(final IComponentChangeSource source, @Nullable final Long value) {
+				ChunksBar.this.size = Objects.requireNonNullElse(value, 0L);
 				ChunksBar.this.repaint();
 			}
 		};
@@ -99,7 +101,8 @@ public class ChunksBar extends JComponent {
 	}
 
 	private final class MouseListener extends MouseAdapter {
-		Point oldPos;
+		@Nullable
+		private Point oldPos;
 
 		private MouseListener() {
 			this.oldPos = null;

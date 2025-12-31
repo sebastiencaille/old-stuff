@@ -41,7 +41,7 @@ public class MlRecursive<T extends IMlType> implements IMlType {
 		try {
 			this.instance = this.clazz.getDeclaredConstructor().newInstance();
 		} catch (final Exception e) {
-			throw new IllegalStateException("Cannot instantiate " + this.clazz.getName());
+			throw new IllegalStateException("Cannot instantiate " + this.clazz.getName(), e);
 		}
 		this.instance.decodeFrom(buffer);
 	}

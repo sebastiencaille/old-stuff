@@ -114,19 +114,19 @@ public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<ch
 		availabilityProperty = new FloatProperty(prefix + AVAILABILITY, this).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getAvailability, null)),
 			implicitConverters(FileDownload.class, AVAILABILITY, java.lang.Float.class));
-		chunksProperty = new ObjectProperty<java.lang.String>(prefix + CHUNKS, this).configureTyped(
+		chunksProperty = new ObjectProperty<java.lang.String>(prefix + CHUNKS, this, null).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getChunks, FileDownload::setChunks)),
 			implicitConverters(FileDownload.class, CHUNKS, java.lang.String.class));
 		numberOfSourcesProperty = new IntProperty(prefix + NUMBER_OF_SOURCES, this).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getNumberOfSources, FileDownload::setNumberOfSources)),
 			implicitConverters(FileDownload.class, NUMBER_OF_SOURCES, java.lang.Integer.class));
-		warnDataProperty = new ObjectProperty<java.util.Collection<java.lang.String>>(prefix + WARN_DATA, this).configureTyped(
+		warnDataProperty = new ObjectProperty<java.util.Collection<java.lang.String>>(prefix + WARN_DATA, this, null).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getWarnData, null)),
 			implicitConverters(FileDownload.class, WARN_DATA, java.util.Collection.class));
 		downloadNotifiedProperty = new BooleanProperty(prefix + DOWNLOAD_NOTIFIED, this).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::isDownloadNotified, FileDownload::setDownloadNotified)),
 			implicitConverters(FileDownload.class, DOWNLOAD_NOTIFIED, java.lang.Boolean.class));
-		blackListDataProperty = new ObjectProperty<java.util.Collection<java.lang.String>>(prefix + BLACK_LIST_DATA, this).configureTyped(
+		blackListDataProperty = new ObjectProperty<java.util.Collection<java.lang.String>>(prefix + BLACK_LIST_DATA, this, null).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getBlackListData, null)),
 			implicitConverters(FileDownload.class, BLACK_LIST_DATA, java.util.Collection.class));
 		hasFirstByteProperty = new BooleanProperty(prefix + HAS_FIRST_BYTE, this).configureTyped(
@@ -138,7 +138,7 @@ public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<ch
 		lastSeenProperty = new IntProperty(prefix + LAST_SEEN, this).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getLastSeen, FileDownload::setLastSeen)),
 			implicitConverters(FileDownload.class, LAST_SEEN, java.lang.Integer.class));
-		nameProperty = new ObjectProperty<java.lang.String>(prefix + NAME, this).configureTyped(
+		nameProperty = new ObjectProperty<java.lang.String>(prefix + NAME, this, null).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getName, FileDownload::setName)),
 			implicitConverters(FileDownload.class, NAME, java.lang.String.class));
 		blackListSizeProperty = new LongProperty(prefix + BLACK_LIST_SIZE, this).configureTyped(
@@ -150,7 +150,7 @@ public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<ch
 		immediateAvailabilityProperty = new FloatProperty(prefix + IMMEDIATE_AVAILABILITY, this).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getImmediateAvailability, null)),
 			implicitConverters(FileDownload.class, IMMEDIATE_AVAILABILITY, java.lang.Float.class));
-		formatProperty = new ObjectProperty<java.lang.String>(prefix + FORMAT, this).configureTyped(
+		formatProperty = new ObjectProperty<java.lang.String>(prefix + FORMAT, this, null).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getFormat, FileDownload::setFormat)),
 			implicitConverters(FileDownload.class, FORMAT, java.lang.String.class));
 		shareCheckedProperty = new BooleanProperty(prefix + SHARE_CHECKED, this).configureTyped(
@@ -159,7 +159,7 @@ public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<ch
 		downloadedSizeProperty = new LongProperty(prefix + DOWNLOADED_SIZE, this).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getDownloadedSize, FileDownload::setDownloadedSize)),
 			implicitConverters(FileDownload.class, DOWNLOADED_SIZE, java.lang.Long.class));
-		stateProperty = new ObjectProperty<ch.scaille.mldonkey.protocol.types.FileState>(prefix + STATE, this).configureTyped(
+		stateProperty = new ObjectProperty<ch.scaille.mldonkey.protocol.types.FileState>(prefix + STATE, this, null).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getState, FileDownload::setState)),
 			implicitConverters(FileDownload.class, STATE, ch.scaille.mldonkey.protocol.types.FileState.class));
 		linksProperty = new ListProperty<java.lang.String>(prefix + LINKS, this).configureTyped(
@@ -168,13 +168,13 @@ public class FileDownloadGuiModel extends GuiModel implements IObjectGuiModel<ch
 		idProperty = new IntProperty(prefix + ID, this).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getId, null)),
 			implicitConverters(FileDownload.class, ID, java.lang.Integer.class));
-		md4Property = new ObjectProperty<byte[]>(prefix + MD_4, this).configureTyped(
+		md4Property = new ObjectProperty<byte[]>(prefix + MD_4, this, null).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getMd4, FileDownload::setMd4)),
 			implicitConverters(FileDownload.class, MD_4, byte[].class));
 		identifiersProperty = new ListProperty<java.lang.String>(prefix + IDENTIFIERS, this).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getIdentifiers, null)),
 			implicitConverters(FileDownload.class, IDENTIFIERS, java.util.List.class));
-		warningsProperty = new ObjectProperty<ch.scaille.mldonkey.model.WarningLevel>(prefix + WARNINGS, this).configureTyped(
+		warningsProperty = new ObjectProperty<ch.scaille.mldonkey.model.WarningLevel>(prefix + WARNINGS, this, null).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileDownload::getWarnings, FileDownload::setWarnings)),
 			implicitConverters(FileDownload.class, WARNINGS, ch.scaille.mldonkey.model.WarningLevel.class));
 		fileSizeProperty = new LongProperty(prefix + FILE_SIZE, this).configureTyped(

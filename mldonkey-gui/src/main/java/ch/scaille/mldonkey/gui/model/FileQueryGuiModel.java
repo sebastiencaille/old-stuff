@@ -42,13 +42,13 @@ public class FileQueryGuiModel extends GuiModel implements IObjectGuiModel<ch.sc
 	
     public FileQueryGuiModel(final String prefix, ModelConfiguration.ModelConfigurationBuilder config) {
 		super(config.ifNotSet(c ->	GuiModel.createErrorProperty(prefix + "FileQuery-Error", c)));
-		resultsProperty = new ObjectProperty<ch.scaille.gui.model.ListModel<ch.scaille.mldonkey.model.FileQueryResult>>(prefix + RESULTS, this).configureTyped(
+		resultsProperty = new ObjectProperty<ch.scaille.gui.model.ListModel<ch.scaille.mldonkey.model.FileQueryResult>>(prefix + RESULTS, this, null).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileQuery::getResults, null)),
 			implicitConverters(FileQuery.class, RESULTS, ch.scaille.gui.model.ListModel.class));
 		idProperty = new IntProperty(prefix + ID, this).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileQuery::getId, FileQuery::setId)),
 			implicitConverters(FileQuery.class, ID, java.lang.Integer.class));
-		searchTextProperty = new ObjectProperty<java.lang.String>(prefix + SEARCH_TEXT, this).configureTyped(
+		searchTextProperty = new ObjectProperty<java.lang.String>(prefix + SEARCH_TEXT, this, null).configureTyped(
 			Configuration.persistent(currentObjectProvider, Persisters.persister(FileQuery::getSearchText, FileQuery::setSearchText)),
 			implicitConverters(FileQuery.class, SEARCH_TEXT, java.lang.String.class));
 		

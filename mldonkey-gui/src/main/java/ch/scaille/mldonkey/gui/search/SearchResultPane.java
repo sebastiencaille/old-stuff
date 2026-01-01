@@ -18,7 +18,6 @@ import ch.scaille.gui.model.ListModelRef;
 import ch.scaille.gui.swing.AbstractPopup;
 import ch.scaille.gui.swing.bindings.JTabbedPaneSelectionBinding;
 import ch.scaille.mldonkey.MLDonkeyGui;
-import ch.scaille.mldonkey.gui.search.SearchResultComponentFactory.SearchResult;
 import ch.scaille.mldonkey.model.FileQuery;
 
 /**
@@ -41,9 +40,9 @@ public class SearchResultPane extends JTabbedPane implements ListDataListener {
 
 		final var searchPanelModel = controller.getSearchPanelModel();
 
-		searchPanelModel.getSelectedSearch()
-				.bind(new JTabbedPaneSelectionBinding<>(this, SearchResultComponentFactory.SearchResult.class));
-		searchPanelModel.getSelectedSearch().addListener(e -> {
+		searchPanelModel.getSelectedQuery()
+				.bind(new JTabbedPaneSelectionBinding<>(this, SearchResult.class));
+		searchPanelModel.getSelectedQuery().addListener(e -> {
 			if (e.getOldValue() instanceof SearchResult s) {
 				s.detach();
 			}
@@ -51,16 +50,16 @@ public class SearchResultPane extends JTabbedPane implements ListDataListener {
 				s.attach();
 			}
 		});
-		this.addMouseListener(new AbstractPopup<>(searchPanelModel.getSelectedSearch()) {
+		this.addMouseListener(new AbstractPopup<>(searchPanelModel.getSelectedQuery()) {
 
 			@Override
 			protected void buildPopup(final JPopupMenu popupMenu,
-					final SearchResultComponentFactory.SearchResult selectedSearchResult) {
+					final SearchResult selectedSearchResult) {
 				popupMenu.removeAll();
 				
 				final var close = new JMenuItem("Close");
 				popupMenu.add(close);
-				close.addActionListener(controller.getCloseAction(selectedSearchResult.fileQuery));
+				close.addActionListener(controller.getCloseAction(selectedSearchResult.fileQuery()));
 				close.addActionListener(_ -> SearchResultPane.this.removeTab());
 				
 				final var asQuery = new JMenuItem("As query");
@@ -76,7 +75,7 @@ public class SearchResultPane extends JTabbedPane implements ListDataListener {
 		if (query.getSearchText() != null && !this.tabs.contains(query)) {
 			this.tabs.add(query);
 			final var searchResult = this.searchResultComponentFactory.create(query);
-			final var pane = new JScrollPane(searchResult.swingComponent);
+			final var pane = new JScrollPane(searchResult.swingComponent());
 			JTabbedPaneSelectionBinding.setValueForTab(this, pane, searchResult);
 			this.add(pane, query.getSearchText());
 		}

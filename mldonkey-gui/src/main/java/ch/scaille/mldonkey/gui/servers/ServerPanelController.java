@@ -8,12 +8,15 @@ import static ch.scaille.gui.mvc.GuiModel.of;
 import java.awt.event.ActionListener;
 
 import ch.scaille.gui.model.ListModel;
-import ch.scaille.gui.model.views.BoundFilter;
-import ch.scaille.gui.model.views.ListViews;
+import ch.scaille.gui.model.views.DynamicListView;
 import ch.scaille.gui.mvc.GuiController;
 import ch.scaille.mldonkey.MLDonkeyGui;
 import ch.scaille.mldonkey.model.Server;
+import lombok.Getter;
+import org.jspecify.annotations.NullMarked;
 
+@NullMarked
+@Getter
 public class ServerPanelController extends GuiController {
 	private final MLDonkeyGui gui;
 	private final ServerPanelModel model;
@@ -23,16 +26,11 @@ public class ServerPanelController extends GuiController {
 		this.gui = gui;
 	}
 
-	public ServerPanelModel getModel() {
-		return this.model;
-	}
-
 	public ListModel<Server> getFilteredServers() {
-		final var filter = BoundFilter.<Server, Boolean>filter(
+		final var view = new DynamicListView<Server, Boolean>(false, null,
 				(server, showAll) -> showAll || server.getState() != null && server.getState().isConnected());
-		final var filtered = gui.getServers().child(ListViews.filtered(filter));
-		this.model.getShowAll().bind(filter);
-		return filtered;
+		this.model.getShowAll().bind(view);
+		return gui.getServers().child(view);
 	}
 
 	public ActionListener getDisconnectAction() {

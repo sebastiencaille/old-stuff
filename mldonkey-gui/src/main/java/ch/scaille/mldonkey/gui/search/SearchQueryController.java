@@ -6,6 +6,7 @@ package ch.scaille.mldonkey.gui.search;
 import static ch.scaille.gui.mvc.GuiModel.of;
 
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 import ch.scaille.gui.mvc.GuiController;
 import ch.scaille.mldonkey.MLDonkeyGui;
@@ -48,7 +49,7 @@ public class SearchQueryController extends GuiController {
 
 	public ActionListener asQueryAction() {
 		return _ -> {
-			final var value = searchModel.lastSelectedResult.getValue();
+			final var value = searchModel.getLastSelectedResult().getValue();
 			if (value != null) {
 				searchModel.getSearchTextProperty().setValue(this, value.getFileNames().getFirst());
 			}
@@ -60,7 +61,7 @@ public class SearchQueryController extends GuiController {
 	}
 
 	public void downloadSelected() {
-		this.gui.download(this.searchModel.lastSelectedResult.getValue());
+		this.gui.download(this.searchModel.getLastSelectedResult().getValue());
 	}
 
 	public ActionListener getBlackListSelectedAction() {
@@ -76,7 +77,7 @@ public class SearchQueryController extends GuiController {
 
 	public ActionListener getAsQueryAction() {
 		return _ -> {
-			var content = searchModel.getSelectedSearch().getValue().fileQuery.getSearchText();
+			var content = Objects.requireNonNull(searchModel.getSelectedQuery().getValue(), "No query selected").fileQuery().getSearchText();
 			if (content.startsWith("CONTAINS[")) {
 				content = content.substring(9, content.length() - 1);
 			}

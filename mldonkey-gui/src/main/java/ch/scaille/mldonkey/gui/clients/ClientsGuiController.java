@@ -6,7 +6,9 @@ package ch.scaille.mldonkey.gui.clients;
 import ch.scaille.gui.mvc.GuiController;
 import ch.scaille.gui.mvc.GuiModel;
 import ch.scaille.mldonkey.MLDonkeyGui;
+import lombok.Getter;
 
+@Getter
 public class ClientsGuiController extends GuiController {
 	private final ClientsGuiModel model;
 
@@ -14,7 +16,4 @@ public class ClientsGuiController extends GuiController {
 		this.model = new ClientsGuiModel(GuiModel.of(this), gui);
 	}
 
-	public ClientsGuiModel getModel() {
-		return this.model;
-	}
 }

@@ -22,8 +22,7 @@ public class ClientsTableModel extends ListModelTableModel<Client, ClientsTableM
 		case SOFTWARE -> "%s %s".formatted(object.getSoftware(), object.getRelease());
 		case STATE -> object.getState();
 		case FILES -> object.getFileCount();
-		default -> throw new IllegalStateException("Unknown column " + column);
-		};
+        };
 	}
 
 	@Override

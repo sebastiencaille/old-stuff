@@ -17,8 +17,7 @@ public class OptionTableModel extends ListModelTableModel<Option, OptionTableMod
 		return switch (column) {
 		case NAME -> object.getName();
 		case VALUE -> object.getValue();
-		default -> throw new IllegalStateException("Unknown column " + column);
-		};
+        };
 
 	}
 

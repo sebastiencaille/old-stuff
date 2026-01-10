@@ -13,29 +13,63 @@ import java.util.Set;
 
 import ch.scaille.annotations.GuiObject;
 import ch.scaille.mldonkey.protocol.types.FileState;
+import lombok.Getter;
+import lombok.Setter;
 
 @GuiObject
 public class FileDownload implements Comparable<FileDownload>, IWarnedData, IBlackListData {
-	private final int id;
-	private String name;
-	private FileState state;
-	private long fileSize;
-	private long downloadedSize;
-	private float downloadRate;
-	private final Set<String> names = new HashSet<>();
-	private int numberOfSources;
-	private String chunks;
-	private byte[] md4;
-	private final List<String> links = new ArrayList<>();
-	private String format;
+	@Getter
+    private final int id;
+	@Setter
+    @Getter
+    private String name;
+	@Setter
+    @Getter
+    private FileState state;
+	@Setter
+    @Getter
+    private long fileSize;
+	@Setter
+    @Getter
+    private long downloadedSize;
+	@Setter
+    @Getter
+    private float downloadRate;
+	@Getter
+    private final Set<String> names = new HashSet<>();
+	@Setter
+    @Getter
+    private int numberOfSources;
+	@Setter
+    @Getter
+    private String chunks;
+	@Setter
+    @Getter
+    private byte[] md4;
+	@Getter
+    private final List<String> links = new ArrayList<>();
+	@Setter
+    @Getter
+    private String format;
 	private WarningLevel warnings = null;
-	private int lastSeen;
-	private final Map<Client, String> availabilities = new HashMap<>();
-	private float availability;
-	private boolean shareChecked;
-	private float immediateAvailability;
-	private boolean hasFirstByte;
-	private boolean downloadNotified;
+	@Setter
+    @Getter
+    private int lastSeen;
+	@Getter
+    private final Map<Client, String> availabilities = new HashMap<>();
+	@Getter
+    private float availability;
+	@Setter
+    @Getter
+    private boolean shareChecked;
+	@Getter
+    private float immediateAvailability;
+	@Setter
+    @Getter
+    private boolean hasFirstByte;
+	@Setter
+    @Getter
+    private boolean downloadNotified;
 
 	public FileDownload(final int id) {
 		this.id = id;
@@ -56,91 +90,11 @@ public class FileDownload implements Comparable<FileDownload>, IWarnedData, IBla
 		return obj.id - this.id;
 	}
 
-	public void setName(final String name) {
-		this.name = name;
-	}
-
-	public void setState(final FileState state) {
-		this.state = state;
-	}
-
-	public void setFileSize(final long fileSize) {
-		this.fileSize = fileSize;
-	}
-
-	public void setDownloadedSize(final long downloadedSize) {
-		this.downloadedSize = downloadedSize;
-	}
-
-	public void setDownloadRate(final float speed) {
-		this.downloadRate = speed;
-	}
-
-	public void addName(final String aname) {
+    public void addName(final String aname) {
 		this.names.add(aname);
 	}
 
-	public void setNumberOfSources(final int numberOfSources) {
-		this.numberOfSources = numberOfSources;
-	}
-
-	public void setChunks(final String chunks) {
-		this.chunks = chunks;
-	}
-
-	public void setMd4(final byte[] md4) {
-		this.md4 = md4;
-	}
-
-	public void setFormat(final String format) {
-		this.format = format;
-	}
-
-	public int getId() {
-		return this.id;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public FileState getState() {
-		return this.state;
-	}
-
-	public long getFileSize() {
-		return this.fileSize;
-	}
-
-	public long getDownloadedSize() {
-		return this.downloadedSize;
-	}
-
-	public float getDownloadRate() {
-		return this.downloadRate;
-	}
-
-	public Set<String> getNames() {
-		return this.names;
-	}
-
-	public int getNumberOfSources() {
-		return this.numberOfSources;
-	}
-
-	public String getChunks() {
-		return this.chunks;
-	}
-
-	public byte[] getMd4() {
-		return this.md4;
-	}
-
-	public String getFormat() {
-		return this.format;
-	}
-
-	@Override
+    @Override
 	public Collection<String> getWarnData() {
 		return this.names;
 	}
@@ -155,15 +109,7 @@ public class FileDownload implements Comparable<FileDownload>, IWarnedData, IBla
 		this.warnings = warnings;
 	}
 
-	public int getLastSeen() {
-		return this.lastSeen;
-	}
-
-	public void setLastSeen(final int value) {
-		this.lastSeen = value;
-	}
-
-	@Override
+    @Override
 	public Collection<String> getBlackListData() {
 		return this.links;
 	}
@@ -173,11 +119,7 @@ public class FileDownload implements Comparable<FileDownload>, IWarnedData, IBla
 		return this.getFileSize();
 	}
 
-	public List<String> getLinks() {
-		return links;
-	}
-
-	public void addLink(final String value) {
+    public void addLink(final String value) {
 		if (!this.links.contains(value)) {
 			this.links.add(value);
 		}
@@ -187,11 +129,7 @@ public class FileDownload implements Comparable<FileDownload>, IWarnedData, IBla
 		return this.links;
 	}
 
-	public Map<Client, String> getAvailabilities() {
-		return availabilities;
-	}
-
-	public void addAvailability(final Client client, final String val) {
+    public void addAvailability(final Client client, final String val) {
 		this.availabilities.put(client, val);
 		this.updateAvailability();
 	}
@@ -238,35 +176,4 @@ public class FileDownload implements Comparable<FileDownload>, IWarnedData, IBla
 		return result / hasValue.length;
 	}
 
-	public float getAvailability() {
-		return this.availability;
-	}
-
-	public float getImmediateAvailability() {
-		return this.immediateAvailability;
-	}
-
-	public boolean isShareChecked() {
-		return this.shareChecked;
-	}
-
-	public void setShareChecked(final boolean shareChecked) {
-		this.shareChecked = shareChecked;
-	}
-
-	public boolean isHasFirstByte() {
-		return this.hasFirstByte;
-	}
-
-	public void setHasFirstByte(final boolean b) {
-		this.hasFirstByte = b;
-	}
-
-	public boolean isDownloadNotified() {
-		return downloadNotified;
-	}
-
-	public void setDownloadNotified(final boolean downloadNotified) {
-		this.downloadNotified = downloadNotified;
-	}
 }

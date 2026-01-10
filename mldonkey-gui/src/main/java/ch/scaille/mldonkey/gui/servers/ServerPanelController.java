@@ -34,7 +34,12 @@ public class ServerPanelController extends GuiController {
 	}
 
 	public ActionListener getDisconnectAction() {
-		return _ -> gui.disconnectServer(ServerPanelController.this.model.getLastSelectedServer().getValue());
+		return _ -> {
+			final var server = ServerPanelController.this.model.getLastSelectedServer().getValue();
+			if (server != null) {
+				gui.disconnectServer(server);
+			}
+		};
 	}
 
 	public ActionListener getConnectMoreAction() {

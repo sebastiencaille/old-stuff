@@ -5,7 +5,9 @@ package ch.scaille.mldonkey.preview;
 
 import ch.scaille.gui.mvc.GuiModel;
 import ch.scaille.javabeans.properties.LongProperty;
+import lombok.Getter;
 
+@Getter
 public class TailRunnerModel extends GuiModel {
 	protected final LongProperty pos = new LongProperty("Pos", this);
 
@@ -13,7 +15,4 @@ public class TailRunnerModel extends GuiModel {
 		super(config);
 	}
 
-	public LongProperty getPos() {
-		return this.pos;
-	}
 }

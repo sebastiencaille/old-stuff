@@ -28,8 +28,7 @@ public class SearchResultModel extends ListModelTableModel<FileQueryResult, Sear
 		}
 		case COMPLETE -> "%s / %s".formatted(object.getAvailability(), object.completeSources());
 		case WARNING -> object.getWarnings();
-		default -> throw new IllegalStateException("Unknown column " + column);
-		};
+        };
 	}
 
 	@Override

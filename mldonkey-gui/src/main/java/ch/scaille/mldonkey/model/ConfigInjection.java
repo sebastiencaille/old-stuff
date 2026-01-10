@@ -7,16 +7,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ch.scaille.mldonkey.MLDonkeyGui;
 import ch.scaille.mldonkey.protocol.gui.SetOption;
+import lombok.Setter;
 
+@Setter
 public class ConfigInjection {
 
 	private Integer natPort;
 
-	public void setNatPort(final Integer natPort) {
-		this.natPort = natPort;
-	}
-
-	public static ConfigInjection read(final Path file) throws IOException {
+    public static ConfigInjection read(final Path file) throws IOException {
 		return new ObjectMapper().readValue(file.toFile(), ConfigInjection.class);
 	}
 

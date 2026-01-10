@@ -3,7 +3,7 @@
  */
 package ch.scaille.mldonkey.gui.download;
 
-import ch.scaille.gui.model.views.DynamicListView;
+import ch.scaille.gui.model.views.IView;
 import ch.scaille.javabeans.properties.BooleanProperty;
 import ch.scaille.javabeans.properties.ListProperty;
 import ch.scaille.javabeans.properties.ObjectProperty;
@@ -18,7 +18,7 @@ import org.jspecify.annotations.Nullable;
 class FileDownloadModel extends FileDownloadGuiModel {
 
     public record DownloadView(boolean showOnlyEmptySources,
-                               boolean showOnlyDownloading) implements DynamicListView.View<FileDownload> {
+                               boolean showOnlyDownloading) implements IView<FileDownload> {
 
         @Override
         public boolean test(FileDownload value) {

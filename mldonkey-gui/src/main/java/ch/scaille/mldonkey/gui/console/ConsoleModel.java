@@ -5,18 +5,16 @@ package ch.scaille.mldonkey.gui.console;
 
 import ch.scaille.gui.mvc.GuiModel;
 import ch.scaille.javabeans.properties.ObjectProperty;
+import lombok.Getter;
 import org.jspecify.annotations.NullMarked;
 
 @NullMarked
 public class ConsoleModel extends GuiModel {
-	private final ObjectProperty<String> console = new ObjectProperty<>("Console", this, "");
+	@Getter
+    private final ObjectProperty<String> console = new ObjectProperty<>("Console", this, "");
 	private int lineCount;
 
-	public ObjectProperty<String> getConsole() {
-		return this.console;
-	}
-
-	public ConsoleModel(final ModelConfiguration.ModelConfigurationBuilder config) {
+    public ConsoleModel(final ModelConfiguration.ModelConfigurationBuilder config) {
 		super(config);
 		this.lineCount = 0;
 	}

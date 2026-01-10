@@ -6,11 +6,16 @@ package ch.scaille.mldonkey.model;
 import ch.scaille.annotations.GuiObject;
 import ch.scaille.gui.model.ListModel;
 import ch.scaille.gui.model.views.ListViews;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
 @GuiObject
 public class FileQuery implements Comparable<FileQuery> {
-	private int id;
-	private String searchText;
+	@Setter
+    private int id;
+	@Setter
+    private String searchText;
 	private ListModel<FileQueryResult> results;
 
 	public FileQuery(final int searchId) {
@@ -23,31 +28,11 @@ public class FileQuery implements Comparable<FileQuery> {
 				.withName("FileQueryResult of " + FileQuery.this.id + "(" + System.identityHashCode(this) + ")");
 	}
 
-	public ListModel<FileQueryResult> getResults() {
-		return this.results;
-	}
-
-	public void dispose() {
+    public void dispose() {
 		this.results.dispose();
 	}
 
-	public String getSearchText() {
-		return this.searchText;
-	}
-
-	public void setSearchText(final String searchText) {
-		this.searchText = searchText;
-	}
-
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(final int value) {
-		this.id = value;
-	}
-
-	@Override
+    @Override
 	public int compareTo(final FileQuery o) {
 		return this.id - o.id;
 	}

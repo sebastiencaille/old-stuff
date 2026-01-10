@@ -18,8 +18,7 @@ public class SharedFilesTableModel extends ListModelTableModel<SharedFile, Share
 		case DATE -> object.getTimestamp();
 		case FILENAME -> object.getName();
 		case SIZE -> object.getSize();
-		default -> throw new IllegalStateException("Unknown column " + column);
-		};
+        };
 	}
 
 	@Override

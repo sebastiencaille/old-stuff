@@ -3,14 +3,12 @@
  */
 package ch.scaille.mldonkey.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class Stats {
 	private int downloadCount = 0;
 
-	public int getDownloadCount() {
-		return this.downloadCount;
-	}
-
-	public void setDownloadCount(int downloadCount) {
-		this.downloadCount = downloadCount;
-	}
 }

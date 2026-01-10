@@ -64,6 +64,7 @@ import ch.scaille.mldonkey.protocol.gui.SearchQuery;
 import ch.scaille.mldonkey.protocol.gui.SetOption;
 import ch.scaille.util.helpers.Logs;
 import ch.scaille.util.helpers.TupleStream;
+import lombok.Getter;
 
 public class MLDonkeyGui {
 
@@ -73,12 +74,19 @@ public class MLDonkeyGui {
     private final CoreConnection connection;
     private Stats stats = new Stats();
     private FileQuery currentQuery = null;
+    @Getter
     private final ListModel<FileQuery> queries = new ListModel<>(ListViews.<FileQuery>sorted());
+    @Getter
     private final ListModel<FileQueryResult> queryResults = new ListModel<>(ListViews.<FileQueryResult>sorted());
+    @Getter
     private final ListModel<FileDownload> downloads = new ListModel<>(ListViews.<FileDownload>sorted());
+    @Getter
     private final ListModel<Option> options = new ListModel<>(ListViews.<Option>sorted());
+    @Getter
     private final ListModel<Client> clients = new ListModel<>(ListViews.<Client>sorted());
+    @Getter
     private final ListModel<Server> servers = new ListModel<>(ListViews.<Server>sorted());
+    @Getter
     private final ListModel<SharedFile> sharedFiles = new ListModel<>(ListViews.<SharedFile>sorted());
     private final Set<String> downloadedIdentifiers = new HashSet<>();
     private final WarnListManager warningManager;
@@ -256,30 +264,6 @@ public class MLDonkeyGui {
         this.connection.sendMessage(new RemoveDownload(download.getId()));
     }
 
-    public ListModel<FileDownload> getDownloads() {
-        return this.downloads;
-    }
-
-    public ListModel<Option> getOptions() {
-        return this.options;
-    }
-
-    public ListModel<FileQueryResult> getQueryResults() {
-        return this.queryResults;
-    }
-
-    public ListModel<Client> getClients() {
-        return this.clients;
-    }
-
-    public ListModel<Server> getServers() {
-        return this.servers;
-    }
-
-    public ListModel<SharedFile> getSharedFiles() {
-        return this.sharedFiles;
-    }
-
     public void preview(final SharedFile value) {
         this.preview(new File(this.incoming, value.getName()));
     }
@@ -352,10 +336,6 @@ public class MLDonkeyGui {
         if (object == this.currentQuery) {
             this.currentQuery = null;
         }
-    }
-
-    public ListModel<FileQuery> getQueries() {
-        return this.queries;
     }
 
     private void checkResult(final FileQueryResult result) {

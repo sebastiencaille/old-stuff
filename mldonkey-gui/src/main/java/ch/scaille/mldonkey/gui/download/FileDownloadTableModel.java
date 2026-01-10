@@ -24,8 +24,7 @@ public class FileDownloadTableModel extends ListModelTableModel<FileDownload, Fi
 		case STATE -> object;
 		case AVAILABILITY -> object.getAvailability();
 		case NOW -> object.getImmediateAvailability();
-		default -> throw new IllegalStateException("Unknown column " + column);
-		};
+        };
 	}
 
 	@Override

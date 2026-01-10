@@ -15,7 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import ch.scaille.mldonkey.MLDonkeyGui;
+import lombok.Getter;
 
+@Getter
 public class SearchPanel extends JPanel {
 	private final SearchQueryController controller;
 
@@ -30,11 +32,7 @@ public class SearchPanel extends JPanel {
 		this.controller.activate();
 	}
 
-	public SearchQueryController getController() {
-		return this.controller;
-	}
-
-	private JPanel createQuerySearchPanel() {
+    private JPanel createQuerySearchPanel() {
 		final var panel = new JPanel();
 		panel.setLayout(new BorderLayout());
 		

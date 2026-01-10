@@ -22,8 +22,7 @@ public class ServersTableModel extends ListModelTableModel<Server, ServersTableM
 		case SOFTWARE -> object.getVersion();
 		case FILES -> object.getFileCount();
 		case USERS -> object.getUserCount();
-		default -> throw new IllegalStateException("Unknown column " + column);
-		};
+        };
 	}
 
 	@Override

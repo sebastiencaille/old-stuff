@@ -9,37 +9,40 @@ import java.awt.event.ActionListener;
 
 import ch.scaille.gui.mvc.GuiController;
 import ch.scaille.mldonkey.MLDonkeyGui;
+import lombok.Getter;
 
 public class SharedFilePanelController extends GuiController {
-	private final MLDonkeyGui gui;
-	private final SharedFilePanelModel model;
+    private final MLDonkeyGui gui;
+    @Getter
+    private final SharedFilePanelModel model;
 
-	public SharedFilePanelController(final MLDonkeyGui gui) {
-		this.model = new SharedFilePanelModel(of(this));
-		this.gui = gui;
-	}
+    public SharedFilePanelController(final MLDonkeyGui gui) {
+        this.model = new SharedFilePanelModel(of(this));
+        this.gui = gui;
+    }
 
-	public SharedFilePanelModel getModel() {
-		return this.model;
-	}
+    public ActionListener getCancelFileAction() {
+        return _ -> model.getSelectedShares().getValue().forEach(gui::deleteSharedFile);
+    }
 
-	public ActionListener getCancelFileAction() {
-		return _ -> model.getSelectedShares().getValue().forEach(gui::deleteSharedFile);
-	}
+    public ActionListener getPreviewFileAction() {
+        return _ -> {
+            final var share = model.getLastSelectedShare().getValue();
+            if (share != null) {
+                gui.preview(share);
+            }
+        };
+    }
 
-	public ActionListener getPreviewFileAction() {
-		return _ -> gui.preview(model.getLastSelectedShare().getValue());
-	}
+    public ActionListener getKillPreviewAction() {
+        return _ -> gui.killPreview();
+    }
 
-	public ActionListener getKillPreviewAction() {
-		return _ -> gui.killPreview();
-	}
-
-	public ActionListener getBlackListFileAction() {
-		return _ -> model.getSelectedShares().getValue().forEach(file -> {
-			gui.blackList(file);
-			gui.deleteSharedFile(file);
-		});
-	}
+    public ActionListener getBlackListFileAction() {
+        return _ -> model.getSelectedShares().getValue().forEach(file -> {
+            gui.blackList(file);
+            gui.deleteSharedFile(file);
+        });
+    }
 
 }

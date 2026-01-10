@@ -3,28 +3,38 @@
  */
 package ch.scaille.mldonkey.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Collection;
 import java.util.Map;
 import java.util.WeakHashMap;
 
 public class Client implements Comparable<Client> {
-	private final int id;
+	@Getter
+    private final int id;
 	private final Map<FileDownload, FileDownload> files = new WeakHashMap<>();
-	private String name;
-	private int geoIp;
-	private String software;
-	private String release;
-	private HostState state;
+	@Setter
+    @Getter
+    private String name;
+	@Setter
+    @Getter
+    private int geoIp;
+	@Setter
+    @Getter
+    private String software;
+	@Setter
+    @Getter
+    private String release;
+	@Setter
+    @Getter
+    private HostState state;
 
 	public Client(final int id) {
 		this.id = id;
 	}
 
-	public int getId() {
-		return this.id;
-	}
-
-	public void addFile(final FileDownload download) {
+    public void addFile(final FileDownload download) {
 		this.files.remove(download);
 		this.files.put(download, download);
 	}
@@ -33,43 +43,11 @@ public class Client implements Comparable<Client> {
 		this.files.remove(download);
 	}
 
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(final String name) {
-		this.name = name;
-	}
-
-	public int getGeoIp() {
-		return this.geoIp;
-	}
-
-	public void setGeoIp(final int geoIp) {
-		this.geoIp = geoIp;
-	}
-
-	public Collection<FileDownload> getDownloads() {
+    public Collection<FileDownload> getDownloads() {
 		return this.files.values();
 	}
 
-	public String getSoftware() {
-		return this.software;
-	}
-
-	public void setSoftware(final String value) {
-		this.software = value;
-	}
-
-	public String getRelease() {
-		return this.release;
-	}
-
-	public void setRelease(final String value) {
-		this.release = value;
-	}
-
-	@Override
+    @Override
 	public int compareTo(final Client o) {
 		return this.id - o.id;
 	}
@@ -84,15 +62,7 @@ public class Client implements Comparable<Client> {
 		return this.id;
 	}
 
-	public HostState getState() {
-		return this.state;
-	}
-
-	public void setState(final HostState state) {
-		this.state = state;
-	}
-
-	public int getFileCount() {
+    public int getFileCount() {
 		return this.files.size();
 	}
 
